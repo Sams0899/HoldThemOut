@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LevelThreeActivity">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Timer :"
+            android:gravity="left"/>
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0:00"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/command"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:text=""/>
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:text=""/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top">
+
+            <Button
+                android:id="@+id/interceptbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Intercept TCP Packets"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/encryptbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Encrypt Data Transmission"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/firewallbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Turn On Firewall"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top">
+
+            <Button
+                android:id="@+id/kernelbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Update Kernel"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/configurebtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Configure Firewall"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/praybtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Pray Harder"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="top">
+
+            <Button
+                android:id="@+id/bandwidthbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Increase Bandwidth"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/disablebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Disable Service"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="top">
+
+            <Button
+                android:id="@+id/B10btn"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="10%"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/B30btn"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="30%"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/B50btn"
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="50%"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/FTPbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="FTP"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/GCDbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="GCD"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/SCDbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="SCD"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="top">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Drop Connection Request"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="top">
+
+            <Button
+                android:id="@+id/Allbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="All"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/Halfbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Half"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="top">
+
+            <TextView
+                android:layout_width="191dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Filter Packets"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="191dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Throttle Traffic"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="top">
+            <SeekBar
+                android:id="@+id/seekfilter"
+                android:layout_width="191dp"
+                android:layout_height="match_parent"
+                android:gravity="left" />
+
+            <SeekBar
+                android:id="@+id/seektraffic"
+                android:layout_width="191dp"
+                android:layout_height="match_parent"
+                android:gravity="right"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="top">
+
+            <TextView
+                android:layout_width="191dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/filter"
+                android:text="0"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="191dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/traffic"
+                android:layout_weight="1"
+                android:text="0"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
