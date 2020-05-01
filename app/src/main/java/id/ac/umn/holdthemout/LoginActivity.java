@@ -2,9 +2,11 @@ package id.ac.umn.holdthemout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +20,7 @@ public class LoginActivity extends AppCompatActivity{
     private EditText username, password;
     String uname, pass;
     private Button loginButton, registerButton;
+    SharedPreferences loginPref, checkLogin;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +33,17 @@ public class LoginActivity extends AppCompatActivity{
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.Btnlogin);
         registerButton = findViewById(R.id.Btnregister);
+        loginPref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isLogin = loginPref.getBoolean("isLogin", false);
+
+        if(isLogin)
+        {
+//            loginPref.edit().putBoolean("isLogin", true).commit();
+//            Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(nextIntent);
+//            LoginActivity.this.finish();
+        }
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +61,7 @@ public class LoginActivity extends AppCompatActivity{
                 {
                     if (c.moveToFirst())
                     {
+                        loginPref.edit().putBoolean("isLogin", true).commit();
                         Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(nextIntent);
                         LoginActivity.this.finish();
