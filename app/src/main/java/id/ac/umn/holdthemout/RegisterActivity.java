@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    sqLiteDatabase.execSQL("Insert Into htodb(Username, FirstName, LastName, Password) VALUES('" + uname + "','" + fname + "','" + lname +"','" + pass + "');");
+                    sqLiteDatabase.execSQL("Insert Into User(Username, FirstName, LastName, Password) VALUES('" + uname + "','" + fname + "','" + lname +"','" + pass + "');");
                     Toast.makeText(getApplicationContext(), "Record Saved", Toast.LENGTH_SHORT).show();
 
                     Intent nextIntent = new Intent(RegisterActivity.this, LoginActivity.class);
