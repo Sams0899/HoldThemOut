@@ -52,7 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
                     Intent nextIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(nextIntent);
                     RegisterActivity.this.finish();
-
                 }
             }
         });
