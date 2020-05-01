@@ -12,40 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".MainActivity">
         </activity>
         <activity
-            android:name=".PreLevelOneActivity"
-            android:screenOrientation="portrait" />
+            android:name=".PreLevelOneActivity" />
         <activity
-            android:name=".LevelOneActivity"
-            android:screenOrientation="portrait" />
+            android:name=".LevelOneActivity"/>
         <activity android:name=".About" />
-        <activity android:name=".Profil_Samuel"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Profil_Nataya"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Profil_Wisnu"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Profil_Neven"
-            android:screenOrientation="portrait" />
+        <activity android:name=".Profil_Samuel" />
+        <activity android:name=".Profil_Nataya" />
+        <activity android:name=".Profil_Wisnu" />
+        <activity android:name=".Profil_Neven" />
         <activity
-            android:name=".PreLevelTwoActivity"
-            android:screenOrientation="portrait" />
+            android:name=".PreLevelTwoActivity"/>
         <activity
-            android:name=".LevelTwoActivity"
-            android:screenOrientation="portrait"></activity>
+            android:name=".LevelTwoActivity"></activity>
         <activity android:name=".GameOverActivity"></activity>
-        <activity android:name=".PreLevelThreeActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".LevelThreeActivity"
-            android:screenOrientation="portrait">></activity>
-        <activity android:name=".RegisterActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".PreLevelThreeActivity"></activity>
+        <activity android:name=".LevelThreeActivity"></activity>
+        <activity android:name=".RegisterActivity">
         </activity>
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
