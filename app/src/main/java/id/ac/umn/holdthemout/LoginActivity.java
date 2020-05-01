@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity{
     SQLiteDatabase sqLiteDatabase;
     private EditText username, password;
     String uname, pass;
-    private Button loginButton;
+    private Button loginButton, registerButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,9 +26,10 @@ public class LoginActivity extends AppCompatActivity{
 
         sqLiteDatabase = openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
 
-        username.findViewById(R.id.username);
-        password.findViewById(R.id.password);
-        loginButton.findViewById(R.id.Btnlogin);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        loginButton = findViewById(R.id.Btnlogin);
+        registerButton = findViewById(R.id.Btnregister);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +55,15 @@ public class LoginActivity extends AppCompatActivity{
                         Toast.makeText(getApplicationContext(), "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerIntent);
+                LoginActivity.this.finish();
             }
         });
 
