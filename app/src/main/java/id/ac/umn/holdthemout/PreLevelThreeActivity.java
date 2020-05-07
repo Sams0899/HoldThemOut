@@ -2,14 +2,21 @@ package id.ac.umn.holdthemout;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class PreLevelThreeActivity extends AppCompatActivity {
-    private Button btnProfile, btnSignal, btnHoneypots, btnTurnoff, btnVPN,btnAllConn, btnReady;
+    private ImageButton btnProfile, btnSignal, btnHoneypots, btnTurnoff, btnVPN, btnAllConn;
+    private Button btnReady;
     private TextView CHEAT;
+    private MediaPlayer bgm;
+    private Vibrator vibrator;
     public boolean profileFlag=false, signalFlag=false, honeypotsFlag=false, wrongFlag1=false, wrongFlag2=false, wrongFlag3=false;
 
     @Override
@@ -25,6 +32,22 @@ public class PreLevelThreeActivity extends AppCompatActivity {
         btnVPN = findViewById(R.id.implementvpn);
         btnAllConn = findViewById(R.id.acceptconnect);
         btnReady= findViewById(R.id.readybtn);
+
+        btnProfile.setImageResource(R.drawable.profile_web_activity_off);
+        btnSignal.setImageResource(R.drawable.analize_incomming_signal_off);
+        btnHoneypots.setImageResource(R.drawable.activate_honeypots_off);
+        btnTurnoff.setImageResource(R.drawable.turn_off_firewall_off);
+        btnVPN.setImageResource(R.drawable.implement_vpn_off);
+        btnAllConn.setImageResource(R.drawable.accept_all_connection_off);
+
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+
+        bgm = MediaPlayer.create(PreLevelThreeActivity.this, R.raw.preattacktest);
+        bgm.start();
+        bgm.setLooping(true);
+
+        final MediaPlayer select = MediaPlayer.create(PreLevelThreeActivity.this, R.raw.select);
+        final MediaPlayer wrong = MediaPlayer.create(PreLevelThreeActivity.this, R.raw.wrong);
 
         CHEAT = findViewById(R.id.command);
 
@@ -42,10 +65,14 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (wrongFlag1 == false)
                 {
                     wrongFlag1 = true;
+                    btnVPN.setImageResource(R.drawable.implement_vpn_on);
+                    select.start();
                 }
                 else
                 {
                     wrongFlag1 = false;
+                    btnVPN.setImageResource(R.drawable.implement_vpn_off);
+                    select.start();
                 }
             }
         });
@@ -56,10 +83,14 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (signalFlag == false)
                 {
                     signalFlag = true;
+                    btnSignal.setImageResource(R.drawable.analize_incomming_signal_on);
+                    select.start();
                 }
                 else
                 {
                     signalFlag = false;
+                    btnSignal.setImageResource(R.drawable.analize_incomming_signal_off);
+                    select.start();
                 }
             }
         });
@@ -70,10 +101,14 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (profileFlag == false)
                 {
                     profileFlag = true;
+                    btnProfile.setImageResource(R.drawable.profile_web_activity_on);
+                    select.start();
                 }
                 else
                 {
                     profileFlag  = false;
+                    btnProfile.setImageResource(R.drawable.profile_web_activity_off);
+                    select.start();
                 }
             }
         });
@@ -84,10 +119,14 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (honeypotsFlag == false)
                 {
                     honeypotsFlag = true;
+                    btnHoneypots.setImageResource(R.drawable.activate_honeypots_on);
+                    select.start();
                 }
                 else
                 {
                     honeypotsFlag = false;
+                    btnHoneypots.setImageResource(R.drawable.activate_honeypots_off);
+                    select.start();
                 }
             }
         });
@@ -98,10 +137,14 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (wrongFlag2 == false)
                 {
                     wrongFlag2 = true;
+                    btnAllConn.setImageResource(R.drawable.accept_all_connection_on);
+                    select.start();
                 }
                 else
                 {
                     wrongFlag2 = false;
+                    btnAllConn.setImageResource(R.drawable.accept_all_connection_off);
+                    select.start();
                 }
             }
         });
@@ -111,10 +154,14 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (wrongFlag3 == false)
                 {
                     wrongFlag3 = true;
+                    btnTurnoff.setImageResource(R.drawable.turn_off_firewall_on);
+                    select.start();
                 }
                 else
                 {
                     wrongFlag3 = false;
+                    btnTurnoff.setImageResource(R.drawable.turn_off_firewall_off);
+                    select.start();
                 }
             }
         });
@@ -128,7 +175,29 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                     startActivity(nextIntent);
                     PreLevelThreeActivity.this.finish();
                 }
+                else
+                {
+                    wrong.start();
+                    vibrator.vibrate(500);
+                }
             }
         });
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bgm.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bgm.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bgm.start();
     }
 }
