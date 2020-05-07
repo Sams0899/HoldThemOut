@@ -5,20 +5,24 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteTransactionListener;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class LevelTwoActivity extends AppCompatActivity {
 
     private static final long starttimeinmillis = 8000;
     private TextView commandView, scoreView,TimeLeft, CHEAT, usernametest, highscoretest;
-    private Button btnHTTPS, btnLogout, btnSID256, btnSID512, btnSID3512, btnVPN, btnEncrypt3224, btnEncrypt3256, btnEncrypt3512, btnUpdate;
+    private ImageButton btnHTTPS, btnLogout, btnSID256, btnSID512, btnSID3512, btnVPN, btnEncrypt3224, btnEncrypt3256, btnEncrypt3512, btnUpdate;
 
     private CountDownTimer countdowntimer;
     private long timeleft = starttimeinmillis;
@@ -27,6 +31,8 @@ public class LevelTwoActivity extends AppCompatActivity {
     public boolean countScoreFlag;
     public int correctFlag=0, wrongFlag=0;
     public int totalScore=0;
+    private MediaPlayer bgm, selectcorrect, selectwrong;
+    private Vibrator vibrator;
 
     public String Username;
 
@@ -54,6 +60,15 @@ public class LevelTwoActivity extends AppCompatActivity {
                 startActivity(CHEATIntent);
             }
         });
+
+        bgm = MediaPlayer.create(LevelTwoActivity.this, R.raw.ingametest);
+        bgm.start();
+        bgm.setLooping(true);
+
+        selectwrong = MediaPlayer.create(LevelTwoActivity.this, R.raw.selectwrong);
+        selectcorrect = MediaPlayer.create(LevelTwoActivity.this, R.raw.selectcorrect);
+
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         startTimer();
         updateTimer();
@@ -184,6 +199,17 @@ public class LevelTwoActivity extends AppCompatActivity {
         btnEncrypt3256 = findViewById(R.id.sha3256btn);
         btnEncrypt3224 = findViewById(R.id.sha3224btn);
         btnEncrypt3512 = findViewById(R.id.sha3512encryptbtn);
+
+        btnUpdate.setImageResource(R.drawable.update_username_password_on);
+        btnHTTPS.setImageResource(R.drawable.https_on);
+        btnLogout.setImageResource(R.drawable.log_out_on);
+        btnSID256.setImageResource(R.drawable.sha256_on);
+        btnSID512.setImageResource(R.drawable.sha512_on);
+        btnSID3512.setImageResource(R.drawable.sha3512_on);
+        btnVPN.setImageResource(R.drawable.vpn_on);
+        btnEncrypt3256.setImageResource(R.drawable.sha3256_on);
+        btnEncrypt3224.setImageResource(R.drawable.sha3224_on);
+        btnEncrypt3512.setImageResource(R.drawable.sha3512_on_1);
         int scoreTemp;
         int  subScore;
 
@@ -233,6 +259,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                     Log.d("Clicked", "1");
                     countScoreFlag = true;
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -241,6 +268,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -248,6 +277,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -255,6 +286,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -262,6 +295,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -269,6 +304,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -276,6 +313,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -283,6 +322,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -290,6 +331,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -297,6 +340,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -308,6 +353,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -316,6 +363,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -324,6 +372,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -331,6 +381,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -338,6 +390,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -345,6 +399,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -352,6 +408,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -359,6 +417,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -366,6 +426,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -373,6 +435,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -384,6 +448,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -391,6 +457,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -399,6 +467,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -407,6 +476,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -428,6 +499,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -435,6 +508,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -442,6 +517,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -449,6 +526,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -460,6 +539,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -467,6 +548,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -474,6 +557,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -482,6 +567,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -490,6 +576,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -497,6 +585,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -504,6 +594,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -511,6 +603,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -518,6 +612,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -525,6 +621,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -536,27 +634,32 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
             btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    wrongFlag++;
+                    wrongFlag++;vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
             btnSID256.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    wrongFlag++;
+                    wrongFlag++;vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
             btnSID512.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    wrongFlag++;
+                    wrongFlag++;vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -565,6 +668,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -573,6 +677,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -580,6 +686,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -587,6 +695,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -594,6 +704,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -601,6 +713,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -612,6 +726,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -619,6 +735,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -626,6 +744,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -633,6 +753,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -640,6 +762,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
 
                 }
@@ -649,6 +773,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -657,6 +782,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -664,6 +791,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -671,6 +800,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -678,6 +809,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -689,6 +822,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -696,6 +831,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -703,6 +840,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -710,6 +849,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -717,6 +858,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
 
                 }
@@ -725,6 +868,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -733,6 +878,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -741,6 +887,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -748,6 +896,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -755,6 +905,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -766,6 +918,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -773,6 +927,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -780,6 +936,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -787,6 +945,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -794,6 +954,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
 
                 }
@@ -802,6 +964,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -809,6 +973,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -817,6 +983,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -825,6 +992,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -832,6 +1001,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -843,6 +1014,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -850,6 +1023,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -857,6 +1032,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -864,6 +1041,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -871,6 +1050,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
 
                 }
@@ -879,6 +1060,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -886,6 +1069,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -893,6 +1078,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -901,6 +1088,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -909,6 +1097,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -920,6 +1110,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -927,6 +1119,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -934,6 +1128,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -941,6 +1137,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -948,6 +1146,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
 
                 }
@@ -956,6 +1156,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -963,6 +1165,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -970,6 +1174,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -977,6 +1183,8 @@ public class LevelTwoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             });
@@ -985,6 +1193,7 @@ public class LevelTwoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked", "1");
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }
@@ -1000,5 +1209,22 @@ public class LevelTwoActivity extends AppCompatActivity {
             commandView.setText("YOU LOSE!!!");
            /* gameOverLose();*/
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bgm.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bgm.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bgm.start();
     }
 }
