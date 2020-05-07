@@ -20,11 +20,15 @@ public class PreLevelOneActivity extends AppCompatActivity {
     private LinearLayout.LayoutParams params;
     private MediaPlayer bgm;
     private Vibrator vibrator;
+    String Username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prelevelone);
+
+        Intent intent = getIntent();
+        Username = intent.getStringExtra("Username");
 
         CHEAT = findViewById(R.id.command);
         btnInstall = findViewById(R.id.installantivirusbtn);
@@ -164,6 +168,7 @@ public class PreLevelOneActivity extends AppCompatActivity {
                 {
                     Intent nextIntent = new Intent(PreLevelOneActivity.this, LevelOneActivity.class);
                     bgm.stop();
+                    nextIntent.putExtra("Username",Username);
                     startActivity(nextIntent);
                     PreLevelOneActivity.this.finish();
                 }

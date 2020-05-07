@@ -17,9 +17,9 @@ public class User{
     }
 
     public User( String fname, String lname, String uname, String pass) {
+        this.uname = uname;
         this.fname = fname;
         this.lname = lname;
-        this.uname = uname;
         this.pass = pass;
     }
 

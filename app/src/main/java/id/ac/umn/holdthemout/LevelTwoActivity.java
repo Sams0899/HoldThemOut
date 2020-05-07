@@ -1,6 +1,10 @@
 package id.ac.umn.holdthemout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteTransactionListener;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
@@ -13,7 +17,7 @@ import android.widget.TextView;
 public class LevelTwoActivity extends AppCompatActivity {
 
     private static final long starttimeinmillis = 8000;
-    private TextView commandView, scoreView,TimeLeft, CHEAT;
+    private TextView commandView, scoreView,TimeLeft, CHEAT, usernametest, highscoretest;
     private Button btnHTTPS, btnLogout, btnSID256, btnSID512, btnSID3512, btnVPN, btnEncrypt3224, btnEncrypt3256, btnEncrypt3512, btnUpdate;
 
     private CountDownTimer countdowntimer;
@@ -24,11 +28,22 @@ public class LevelTwoActivity extends AppCompatActivity {
     public int correctFlag=0, wrongFlag=0;
     public int totalScore=0;
 
+    public String Username;
+
+    SQLiteDatabase sqLiteDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leveltwo);
+
+        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
+
+        Intent intent = getIntent();
+        totalScore = intent.getIntExtra("TotalScore",0);
+        Username = intent.getStringExtra("Username");
         TimeLeft = findViewById(R.id.timer);
+
 
         CHEAT = findViewById(R.id.command);
 
@@ -96,6 +111,17 @@ public class LevelTwoActivity extends AppCompatActivity {
         btnEncrypt3256.setClickable(false);
         btnEncrypt3224.setClickable(false);
         btnEncrypt3512.setClickable(false);
+
+        /////////////COBA HIGHSCORE
+        Log.d("USERNAMEEEEEEEEEEEEEEE", "Username :" + Username);
+
+//        Cursor c = sqLiteDatabase.rawQuery("Select * From User",null);
+//        String username = c.getString(1);
+        String insertTotalScore = String.valueOf(totalScore);
+
+        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
+
+        //////////////////
 
         Intent intentNext = new Intent(LevelTwoActivity.this, PreLevelThreeActivity.class);
         correctFlag++; //EXCEPTION HANDLING

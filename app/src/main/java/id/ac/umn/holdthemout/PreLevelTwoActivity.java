@@ -14,15 +14,21 @@ public class PreLevelTwoActivity extends AppCompatActivity {
 
     private ImageButton btnSSH, btnIDS, btnARP, btnTurnon, btnInstall,btnActivate, btnBlock;
     private Button btnReady;
-    private TextView CHEAT;
+    private TextView CHEAT,test;
     public boolean SSHFlag=false, IDSFlag=false, ARPFlag=false, turnonFlag=false, wrongFlag1=false, wrongFlag2=false, wrongFlag3=false;
     private MediaPlayer bgm;
     private Vibrator vibrator;
+    int totalScore;
+    String Username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preleveltwo);
+
+        Intent intent = getIntent();
+        totalScore = intent.getIntExtra("TotalScore",0);
+        Username = intent.getStringExtra("Username");
 
         CHEAT = findViewById(R.id.command);
         btnInstall = findViewById(R.id.installantivirusbtn);
@@ -193,6 +199,8 @@ public class PreLevelTwoActivity extends AppCompatActivity {
                 if (SSHFlag==true && IDSFlag==true && ARPFlag==true && turnonFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
                     Intent nextIntent = new Intent(PreLevelTwoActivity.this, LevelTwoActivity.class);
+                    nextIntent.putExtra("TotalScore", totalScore);
+                    nextIntent.putExtra("Username", Username);
                     startActivity(nextIntent);
                     PreLevelTwoActivity.this.finish();
                 }

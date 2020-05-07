@@ -6,34 +6,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:layout_marginTop="200dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:text="HOLD THEM OUT"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:text="Who is Playing?"/>
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="Enter your name"
         android:textSize="30sp"
-        android:inputType="text"/>
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textSize="30sp"
-        android:inputType="textPassword"/>
+        android:inputType="text"
+        android:layout_marginTop="50dp"/>
 
     <Button
         android:id="@+id/Btnlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"/>
-
-    <Button
-        android:id="@+id/Btnregister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"/>
+        android:text="Play"
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

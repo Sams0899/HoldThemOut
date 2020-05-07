@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HighScoreActivity"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:id="@+id/mainlinearlayout">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="YOUR HIGHSCORE"
+        android:textSize="30sp"
+        android:textColor="@color/highscore"/>
+
+   <ScrollView
+       android:id="@+id/scrollview"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:layout_margin="20dp">
+
+       <LinearLayout
+           android:id="@+id/linearlayout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_gravity="center">
+
+       </LinearLayout>
+   </ScrollView>
+
+    <Button
+        android:id="@+id/GlobalHSBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Global Highscore"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

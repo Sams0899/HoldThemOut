@@ -2,7 +2,9 @@
 
 package id.ac.umn.holdthemout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -31,6 +33,7 @@ public class LevelOneActivity extends AppCompatActivity {
     public int totalScore=0;
     private MediaPlayer bgm, selectcorrect, selectwrong;
     private Vibrator vibrator;
+    String Username;
 
 //    public Timer timer = new Timer();
 //    public final Handler handler = new Handler();
@@ -40,6 +43,10 @@ public class LevelOneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levelone);
+
+        Intent intent = getIntent();
+        Username = intent.getStringExtra("Username");
+
         CHEAT = findViewById(R.id.command);
         TimeLeft = findViewById(R.id.timer);
 
@@ -144,6 +151,8 @@ public class LevelOneActivity extends AppCompatActivity {
 
         Intent intentNext = new Intent(LevelOneActivity.this, PreLevelTwoActivity.class);
         correctFlag++; //EXCEPTION HANDLING
+        intentNext.putExtra("TotalScore",totalScore);
+        intentNext.putExtra("Username", Username);
         startActivity(intentNext);
         LevelOneActivity.this.finish();
     }

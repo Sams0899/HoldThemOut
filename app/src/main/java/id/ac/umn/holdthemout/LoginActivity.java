@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -14,14 +16,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity{
 
+    FirebaseDatabase database;
+    DatabaseReference myRef;
     SQLiteDatabase sqLiteDatabase;
     private EditText username, password;
-    String uname, pass;
+    String uname;
     private Button loginButton, registerButton;
     SharedPreferences loginPref, checkLogin;
 
@@ -30,58 +37,41 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        sqLiteDatabase = openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
+        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS User(Id INTEGER PRIMARY KEY AUTOINCREMENT, Username VARCHAR(50), Highscore VARCHAR(10))");
+
 
         username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
         loginButton = findViewById(R.id.Btnlogin);
-        registerButton = findViewById(R.id.Btnregister);
         loginPref = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isLogin = loginPref.getBoolean("isLogin", false);
+//        boolean isLogin = loginPref.getBoolean("isLogin", false);
 
-        if(isLogin)
-        {
+//        if(isLogin)
+//        {
 //            loginPref.edit().putBoolean("isLogin", true).commit();
 //            Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
 //            startActivity(nextIntent);
 //            LoginActivity.this.finish();
-        }
-
+//        }
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 uname = username.getText().toString().trim();
-                pass = password.getText().toString().trim();
-
-                Cursor c = sqLiteDatabase.rawQuery("Select * From User Where Username='" + uname + "' AND Password='" + pass + "'", null);
-
-                if (uname.equals("") || pass.equals(""))
+                if(uname.equals(""))
                 {
-                    Toast.makeText(getApplicationContext(), "Fields can not be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Username can not be empty",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    if (c.moveToFirst())
-                    {
-                        loginPref.edit().putBoolean("isLogin", true).commit();
-                        Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(nextIntent);
-                        LoginActivity.this.finish();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
-                    }
+                    sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + uname + "',0)") ;
+                    Toast.makeText(LoginActivity.this, "Profile Saved",Toast.LENGTH_SHORT).show();
+                    Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    nextIntent.putExtra("Username",uname);
+//                    loginPref.edit().putBoolean("isLogin", true).apply();
+                    startActivity(nextIntent);
+                    LoginActivity.this.finish();
                 }
-            }
-        });
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(registerIntent);
-                LoginActivity.this.finish();
             }
         });
 
