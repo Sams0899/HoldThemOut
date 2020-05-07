@@ -194,50 +194,50 @@ public class LevelThreeActivity extends AppCompatActivity {
         Log.d("WRONG", "wrongFlag= " + wrongFlag);
         commandFlag = Math.floor(Math.random() * (22 - 1)) + 1;
         if(commandFlag==1){
-            commandView.setText("Antivirus is out of date!");
+            commandView.setText("Kernel Need To Be Updated");
         }
         else if(commandFlag==2){
-            commandView.setText("Unknown Email with suspicious attachment is received");
+            commandView.setText("TCP Packets Need To Be Intercepted");
         }
         else if(commandFlag==3){
-            commandView.setText("Codes need your approval!");
+            commandView.setText("Increase Bandwidth 10%");
         }
         else if(commandFlag==4){
-            commandView.setText("We are being attacked by some Viruses!");
+            commandView.setText("Increase Bandwidth 30%");
         }
         else if(commandFlag==5){
-            commandView.setText("Registry need to be cleaned!");
+            commandView.setText("Increase Bandwidth 50%");
         }
         else if(commandFlag==6){
-            commandView.setText("command 6");
+            commandView.setText("Drop All of Connection Requests");
         }
         else if(commandFlag==7){
-            commandView.setText("command 7");
+            commandView.setText("Drop Half of Connection Requests");
         }
         else if(commandFlag==8){
-            commandView.setText("command 8");
+            commandView.setText("Data Transmit Have To Be Encrypted");
         }
         else if(commandFlag==9){
-            commandView.setText("command 9");
+            commandView.setText("Firewall Need To Be Turned On");
         }
         else if(commandFlag==10){
-            commandView.setText("command 10");
+            commandView.setText("Disable FTP Service");
         }
         else if(commandFlag==11){
-            commandView.setText("command 11");
+            commandView.setText("Disable GCD Service");
         }
         else if(commandFlag==12){
-            commandView.setText("command 12");
+            commandView.setText("Disable SCD Service");
         }
         else if(commandFlag==13){
-            commandView.setText("command 13");
+            commandView.setText("Firewall Need To Be Reconfigured");
         }
         else if(commandFlag==14){
-            commandView.setText("command 14");
+            commandView.setText("You Need To Praise The Lord Harder");
         }
         //command flag 15++ khusus seek bar
         else if(commandFlag==15){
-            commandView.setText("command 15");
+            commandView.setText("Filter 25% of The Incoming Packets");
             String tempTime = TimeLeft.getText().toString();
             if (tempTime.equals("0:05")) {
                 String PercentageTraffic = FilterPercentage.getText().toString();
@@ -275,7 +275,7 @@ public class LevelThreeActivity extends AppCompatActivity {
             }
         }
         else if(commandFlag==16){
-            commandView.setText("command 16");
+            commandView.setText("Filter 50% of The Incoming Packets");
             String tempTime = TimeLeft.getText().toString();
             if (tempTime.equals("0:05")) {
                 String PercentageTraffic = FilterPercentage.getText().toString();
@@ -313,7 +313,7 @@ public class LevelThreeActivity extends AppCompatActivity {
             }
         }
         else if(commandFlag==17){
-            commandView.setText("command 17");
+            commandView.setText("Filter 75% of The Incoming Packets");
             String tempTime = TimeLeft.getText().toString();
             if (tempTime.equals("0:05")) {
                 String PercentageTraffic = FilterPercentage.getText().toString();
@@ -351,7 +351,7 @@ public class LevelThreeActivity extends AppCompatActivity {
             }
         }
         else if(commandFlag==18){
-            commandView.setText("command 18");
+            commandView.setText("Filter 90% of The Incoming Packets");
             String tempTime = TimeLeft.getText().toString();
             if (tempTime.equals("0:05")) {
                 String PercentageTraffic = FilterPercentage.getText().toString();
@@ -389,7 +389,7 @@ public class LevelThreeActivity extends AppCompatActivity {
             }
         }
         else if(commandFlag==19){
-            commandView.setText("command 19");
+            commandView.setText("Throttle Down 10% of The Traffic");
             String tempTime = TimeLeft.getText().toString();
             if (tempTime.equals("0:05")) {
                 String PercentageTraffic = TrafficPercentage.getText().toString();
@@ -427,7 +427,7 @@ public class LevelThreeActivity extends AppCompatActivity {
             }
         }
         else if(commandFlag==20){
-            commandView.setText("command 20");
+            commandView.setText("Throttle Down 20% of The Traffic");
             String tempTime = TimeLeft.getText().toString();
             if (tempTime.equals("0:05")) {
                 String PercentageTraffic = TrafficPercentage.getText().toString();
@@ -465,7 +465,7 @@ public class LevelThreeActivity extends AppCompatActivity {
             }
         }
         else if(commandFlag==21){
-            commandView.setText("command 21");
+            commandView.setText("Throttle Down 50% of The Traffic");
             String tempTime = TimeLeft.getText().toString();
             if (tempTime.equals("0:05")) {
                 String PercentageTraffic = TrafficPercentage.getText().toString();
