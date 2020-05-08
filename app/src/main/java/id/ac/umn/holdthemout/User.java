@@ -8,36 +8,19 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 @Entity
 public class User{
-    String fname;
-    String lname;
-    String uname;
-    String pass;
+    public String uname;
+    public Integer hscore;
 
     public User() {
     }
 
-    public User( String fname, String lname, String uname, String pass) {
+    public String getData(){
+        return this.uname + this.hscore;
+    }
+
+    public User(Integer hscore, String uname) {
         this.uname = uname;
-        this.fname = fname;
-        this.lname = lname;
-        this.pass = pass;
-    }
-
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+        this.hscore = hscore;
     }
 
     public String getUname() {
@@ -48,11 +31,11 @@ public class User{
         this.uname = uname;
     }
 
-    public String getPass() {
-        return pass;
+    public Integer getHscore() {
+        return hscore;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setHscore(String Integer) {
+        this.hscore = hscore;
     }
 }

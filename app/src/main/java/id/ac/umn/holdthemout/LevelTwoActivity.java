@@ -36,20 +36,20 @@ public class LevelTwoActivity extends AppCompatActivity {
 
     public String Username;
 
-    SQLiteDatabase sqLiteDatabase;
+//    SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leveltwo);
 
-        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
+//        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
 
         Intent intent = getIntent();
         totalScore = intent.getIntExtra("TotalScore",0);
         Username = intent.getStringExtra("Username");
-        TimeLeft = findViewById(R.id.timer);
 
+        TimeLeft = findViewById(R.id.timer);
 
         CHEAT = findViewById(R.id.command);
 
@@ -127,21 +127,23 @@ public class LevelTwoActivity extends AppCompatActivity {
         btnEncrypt3224.setClickable(false);
         btnEncrypt3512.setClickable(false);
 
-        /////////////COBA HIGHSCORE
-        Log.d("USERNAMEEEEEEEEEEEEEEE", "Username :" + Username);
-
-//        Cursor c = sqLiteDatabase.rawQuery("Select * From User",null);
-//        String username = c.getString(1);
-        String insertTotalScore = String.valueOf(totalScore);
-
-        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
-
-        //////////////////
+//        /////////////COBA HIGHSCORE
+//        Log.d("USERNAMEEEEEEEEEEEEEEE", "Username :" + Username);
+//
+////        Cursor c = sqLiteDatabase.rawQuery("Select * From User",null);
+////        String username = c.getString(1);
+//        String insertTotalScore = String.valueOf(totalScore);
+//
+//        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
+//
+//        //////////////////
 
         Intent intentNext = new Intent(LevelTwoActivity.this, PreLevelThreeActivity.class);
         correctFlag++; //EXCEPTION HANDLING
-        LevelTwoActivity.this.finish();
+        intentNext.putExtra("TotalScore", totalScore);
+        intentNext.putExtra("Username", Username);
         startActivity(intentNext);
+        LevelTwoActivity.this.finish();
     }
 
     private void gameOverLose(){

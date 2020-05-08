@@ -17,6 +17,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 public class HighScoreActivity extends AppCompatActivity {
@@ -24,6 +27,9 @@ public class HighScoreActivity extends AppCompatActivity {
     SQLiteDatabase sqLiteDatabase;
     Button globalhighscorebtn;
     String username;
+    int highscore;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,12 @@ public class HighScoreActivity extends AppCompatActivity {
         LinearLayout mainll = findViewById(R.id.mainlinearlayout);
         globalhighscorebtn = findViewById(R.id.GlobalHSBtn);
 
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Users");
+
         Cursor c = sqLiteDatabase.rawQuery("Select * From User Order By Highscore * 1 Desc",null);
+        Cursor cursorusername = sqLiteDatabase.rawQuery("Select Username From User",null);
+        Cursor cursorhighscore = sqLiteDatabase.rawQuery("Select Highscore From User Order By Highscore * 1 Desc",null);
 
         if(c.getCount()==0)
         {
@@ -44,18 +55,26 @@ public class HighScoreActivity extends AppCompatActivity {
         else
         {
             StringBuffer buffer = new StringBuffer();
-            StringBuffer bufferusername = new StringBuffer();
+//            StringBuffer bufferusername = new StringBuffer();
+
+            cursorusername.moveToFirst();
+            username = cursorusername.getString(cursorusername.getColumnIndex("Username"));
+
+            cursorhighscore.moveToFirst();
+            highscore = cursorhighscore.getInt(cursorhighscore.getColumnIndex("Highscore"));
+
             while(c.moveToNext())
             {
                 buffer.append(""+c.getString(2)+"\n\n");
-                bufferusername.append(c.getString(1));
+//                bufferusername.append(c.getString(1));
             }
             TextView tv = new TextView(getApplicationContext());
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.MATCH_PARENT);
+            lp.weight = 1;
             tv.setTextSize(30);
-            tv.setTextColor(Color.parseColor("#817CEE"));
+            tv.setTextColor(Color.parseColor("#ffffff"));
             tv.setLayoutParams(lp);
             tv.setText(buffer.toString());
             ll.addView(tv);
@@ -65,11 +84,24 @@ public class HighScoreActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.MATCH_PARENT);
             tvusername.setTextSize(20);
-            tvusername.setTextColor(Color.parseColor("#817CEE"));
+            tvusername.setTextColor(Color.parseColor("#ffffff"));
             tvusername.setLayoutParams(lpusername);
-            tvusername.setText(bufferusername.toString());
+            tvusername.setText(username);
             mainll.addView(tvusername);
+
+            User user = new User(highscore, username);
+            myRef.child(username).child("hscore").setValue(highscore);
+            myRef.child(username).child("uname").setValue(username);
         }
+
+        globalhighscorebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nextIntent = new Intent(HighScoreActivity.this, GlobalHighScoreActivity.class);
+                startActivity(nextIntent);
+                HighScoreActivity.this.finish();
+            }
+        });
     }
 
     @Override

@@ -2,30 +2,42 @@
 
 package id.ac.umn.holdthemout;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-
+import android.os.Handler;
+import android.os.Vibrator;
+import android.sax.StartElementListener;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class LevelThreeActivity extends AppCompatActivity {
-    private long starttimeinmillis = 6000;
+    private long starttimeinmillis = 10000;
     private TextView commandView, scoreView, TimeLeft, CHEAT, TrafficPercentage, FilterPercentage;
     private static SeekBar Filter, Traffic;
-    private Button btnIntercept, btnBand10, btnBand30, btnBand50, btnDrpAll,btnDrpHalf,btnEncrypt,btnTurnOn,btnUpdate,btnFTP,btnGCD, btnSCD,btnConfig,btnPray;
+    private ImageButton btnFilter, btnThrottle,btnIntercept, btnBand10, btnBand30, btnBand50, btnDrpAll,btnDrpHalf,btnEncrypt,btnTurnOn,btnUpdate,btnFTP,btnGCD, btnSCD,btnConfig,btnPray;
 
     private CountDownTimer countdowntimer;
     //    private boolean timerrunning;
     private long timeleft = starttimeinmillis;
-
+    public String tempPercentage, tempPercentage2;
     public double commandFlag;
     public int correctFlag=0, wrongFlag=0;
     public int totalScore=0;
 
+    private MediaPlayer bgm, selectcorrect, selectwrong;
+    private Vibrator vibrator;
+
+    public String Username;
 
 //    public Timer timer = new Timer();
 //    public final Handler handler = new Handler();
@@ -36,6 +48,20 @@ public class LevelThreeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levelthree);
         TimeLeft = findViewById(R.id.timer);
+
+        Intent intent = getIntent();
+        totalScore = intent.getIntExtra("TotalScore",0);
+        Username = intent.getStringExtra("Username");
+
+        bgm = MediaPlayer.create(LevelThreeActivity.this, R.raw.ingametest);
+        bgm.start();
+        bgm.setLooping(true);
+
+        selectwrong = MediaPlayer.create(LevelThreeActivity.this, R.raw.selectwrong);
+        selectcorrect = MediaPlayer.create(LevelThreeActivity.this, R.raw.selectcorrect);
+
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+
         Seebbar();
         startTimer();
         updateTimer();
@@ -61,6 +87,10 @@ public class LevelThreeActivity extends AppCompatActivity {
         Traffic = (SeekBar)findViewById(R.id.seektraffic);
         TrafficPercentage = (TextView)findViewById(R.id.traffic);
         FilterPercentage = (TextView)findViewById(R.id.filter);
+        Filter.incrementProgressBy(5);
+        Traffic.incrementProgressBy(10);
+        Filter.setProgress(0);
+        Traffic.setProgress(0);
         TrafficPercentage.setText(Traffic.getProgress()+"%");
         FilterPercentage.setText(Filter.getProgress()+"%");
         Traffic.setOnSeekBarChangeListener(
@@ -68,6 +98,8 @@ public class LevelThreeActivity extends AppCompatActivity {
                     int progressT_value;
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                        i/=10;
+                        i*=10;
                         progressT_value = i;
                         TrafficPercentage.setText(i+"%");
                     }
@@ -79,6 +111,7 @@ public class LevelThreeActivity extends AppCompatActivity {
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
                         TrafficPercentage.setText(progressT_value+"%");
+                        tempPercentage = TrafficPercentage.getText().toString();
                     }
                 }
         );
@@ -87,6 +120,8 @@ public class LevelThreeActivity extends AppCompatActivity {
                     int progressF_value;
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                        i/=5;
+                        i*=5;
                         progressF_value = i;
                         FilterPercentage.setText(i+"%");
                     }
@@ -98,6 +133,7 @@ public class LevelThreeActivity extends AppCompatActivity {
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
                         FilterPercentage.setText(progressF_value+"%");
+                        tempPercentage2 = FilterPercentage.getText().toString();
                     }
                 }
         );
@@ -164,8 +200,12 @@ public class LevelThreeActivity extends AppCompatActivity {
         btnConfig.setClickable(false);
         btnPray.setClickable(false);
 
-//        Intent intentNext = new Intent(LevelThreeActivity.this, PreLevelTwoActivity.class);
-//        startActivity(intentNext);
+        correctFlag++; //EXCEPTION HANDLING
+        Intent intentNext = new Intent(LevelThreeActivity.this, PreLevelFourActivity.class);
+        intentNext.putExtra("TotalScore", totalScore);
+        intentNext.putExtra("Username", Username);
+        startActivity(intentNext);
+        LevelThreeActivity.this.finish();
     }
 
     public void attackStart() {
@@ -186,6 +226,23 @@ public class LevelThreeActivity extends AppCompatActivity {
         btnSCD = findViewById(R.id.SCDbtn);
         btnConfig = findViewById(R.id.configurebtn);
         btnPray = findViewById(R.id.praybtn);
+        btnFilter = findViewById(R.id.filterbtn);
+        btnThrottle = findViewById(R.id.throttle);
+
+        btnUpdate.setBackgroundResource(R.drawable.update_kernel_on);
+        btnIntercept.setBackgroundResource(R.drawable.intercept_tcp_packets_on);
+        btnBand10.setBackgroundResource(R.drawable.ten__on);
+        btnBand30.setBackgroundResource(R.drawable.thirty__on);
+        btnBand50.setBackgroundResource(R.drawable.fifty__on);
+        btnDrpAll.setBackgroundResource(R.drawable.all_on);
+        btnDrpHalf.setBackgroundResource(R.drawable.half_on);
+        btnEncrypt.setBackgroundResource(R.drawable.encrypt_data_transmission_on);
+        btnTurnOn.setBackgroundResource(R.drawable.turn_on_firewall_on);
+        btnFTP.setBackgroundResource(R.drawable.ftp_on);
+        btnGCD.setBackgroundResource(R.drawable.gcd_on);
+        btnSCD.setBackgroundResource(R.drawable.scd_on);
+        btnConfig.setBackgroundResource(R.drawable.configure_firewall_on);
+        btnPray.setBackgroundResource(R.drawable.pray_harder_on);
 
 
         scoreView.setText("Score : " + totalScore);
@@ -209,13 +266,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             commandView.setText("Increase Bandwidth 50%");
         }
         else if(commandFlag==6){
-            commandView.setText("Drop All of Connection Requests");
+            commandView.setText("Drop All of The Connection Request");
         }
         else if(commandFlag==7){
-            commandView.setText("Drop Half of Connection Requests");
+            commandView.setText("Drop Half of The Connection Request");
         }
         else if(commandFlag==8){
-            commandView.setText("Data Transmit Have To Be Encrypted");
+            commandView.setText("Data Transmission Need To Be Encrypted");
         }
         else if(commandFlag==9){
             commandView.setText("Firewall Need To Be Turned On");
@@ -233,286 +290,153 @@ public class LevelThreeActivity extends AppCompatActivity {
             commandView.setText("Firewall Need To Be Reconfigured");
         }
         else if(commandFlag==14){
-            commandView.setText("You Need To Praise The Lord Harder");
+            commandView.setText("You Need To Praise The Lord");
         }
         //command flag 15++ khusus seek bar
         else if(commandFlag==15){
-            commandView.setText("Filter 25% of The Incoming Packets");
-            String tempTime = TimeLeft.getText().toString();
-            if (tempTime.equals("0:05")) {
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("25%")){
-                    totalScore+=5;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:04")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("25%")){
-                    totalScore+=4;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:03")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("25%")){
-                    totalScore+=3;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:02")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("25%")){
-                    totalScore+=2;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:01")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("25%")){
-                    totalScore+=1;
-                    resetTimer();
-                }
-            }else{
-                wrongFlag++;
-                resetTimer();
-            }
+            commandView.setText("Filter 25% of Incoming Packets");
         }
         else if(commandFlag==16){
-            commandView.setText("Filter 50% of The Incoming Packets");
-            String tempTime = TimeLeft.getText().toString();
-            if (tempTime.equals("0:05")) {
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=5;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:04")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=4;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:03")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=3;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:02")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=2;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:01")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=1;
-                    resetTimer();
-                }
-            }else{
-                wrongFlag++;
-                resetTimer();
-            }
+            commandView.setText("Filter 50% of Incoming Packets");
         }
         else if(commandFlag==17){
-            commandView.setText("Filter 75% of The Incoming Packets");
-            String tempTime = TimeLeft.getText().toString();
-            if (tempTime.equals("0:05")) {
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("75%")){
-                    totalScore+=5;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:04")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("75%")){
-                    totalScore+=4;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:03")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("75%")){
-                    totalScore+=3;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:02")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("75%")){
-                    totalScore+=2;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:01")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("75%")){
-                    totalScore+=1;
-                    resetTimer();
-                }
-            }else{
-                wrongFlag++;
-                resetTimer();
-            }
+            commandView.setText("Filter 75% of Incoming Packets");
         }
         else if(commandFlag==18){
-            commandView.setText("Filter 90% of The Incoming Packets");
-            String tempTime = TimeLeft.getText().toString();
-            if (tempTime.equals("0:05")) {
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("90%")){
-                    totalScore+=5;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:04")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("90%")){
-                    totalScore+=4;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:03")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("90%")){
-                    totalScore+=3;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:02")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("90%")){
-                    totalScore+=2;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:01")){
-                String PercentageTraffic = FilterPercentage.getText().toString();
-                if(PercentageTraffic.equals("90%")){
-                    totalScore+=1;
-                    resetTimer();
-                }
-            }else{
-                wrongFlag++;
-                resetTimer();
-            }
+            commandView.setText("Filter 90% of Incoming Packets");
         }
         else if(commandFlag==19){
-            commandView.setText("Throttle Down 10% of The Traffic");
-            String tempTime = TimeLeft.getText().toString();
-            if (tempTime.equals("0:05")) {
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("10%")){
-                    totalScore+=5;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:04")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("10%")){
-                    totalScore+=4;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:03")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("10%")){
-                    totalScore+=3;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:02")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("10%")){
-                    totalScore+=2;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:01")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("10%")){
-                    totalScore+=1;
-                    resetTimer();
-                }
-            }else{
-                wrongFlag++;
-                resetTimer();
-            }
+            commandView.setText("Throttle Traffic to 10%");
         }
         else if(commandFlag==20){
-            commandView.setText("Throttle Down 20% of The Traffic");
-            String tempTime = TimeLeft.getText().toString();
-            if (tempTime.equals("0:05")) {
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("30%")){
-                    totalScore+=5;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:04")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("30%")){
-                    totalScore+=4;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:03")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("30%")){
-                    totalScore+=3;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:02")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("30%")){
-                    totalScore+=2;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:01")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("30%")){
-                    totalScore+=1;
-                    resetTimer();
-                }
-            }else{
-                wrongFlag++;
-                resetTimer();
-            }
+            commandView.setText("Throttle Traffic to 30%");
         }
         else if(commandFlag==21){
-            commandView.setText("Throttle Down 50% of The Traffic");
-            String tempTime = TimeLeft.getText().toString();
-            if (tempTime.equals("0:05")) {
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=5;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:04")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=4;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:03")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=3;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:02")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=2;
-                    resetTimer();
-                }
-            }else if(tempTime.equals("0:01")){
-                String PercentageTraffic = TrafficPercentage.getText().toString();
-                if(PercentageTraffic.equals("50%")){
-                    totalScore+=1;
-                    resetTimer();
-                }
-            }else{
-                wrongFlag++;
-                resetTimer();
-            }
+            commandView.setText("Throttle Traffic to 50%");
         }
         Log.d("COMMAND", "commandFlag = " + commandFlag);
 
+        btnThrottle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(commandFlag==19){
+                    if(tempPercentage.equals("10%")){
+                        correctFlag++;
+                        selectcorrect.start();
+                        countscore();
+                        resetTimer();
+                    } else{
+                        wrongFlag++;
+                        vibrator.vibrate(100);
+                        selectwrong.start();
+                        resetTimer();
+                    }
+                }else if(commandFlag==20){
+                    if(tempPercentage.equals("30%")){
+                        correctFlag++;
+                        selectcorrect.start();
+                        countscore();
+                        resetTimer();
+                    }else{
+                        wrongFlag++;
+                        vibrator.vibrate(100);
+                        selectwrong.start();
+                        resetTimer();
+                    }
+                }else if(commandFlag==21){
+                    if(tempPercentage.equals("50%")){
+                        correctFlag++;
+                        selectcorrect.start();
+                        countscore();
+                        resetTimer();
+                    }else{
+                        wrongFlag++;
+                        vibrator.vibrate(100);
+                        selectwrong.start();
+                        resetTimer();
+                    }
+                }
+                else{
+                    wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
+                    resetTimer();
+                }
+            }
+        });
+
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(commandFlag==15){
+                    if(tempPercentage2.equals("25%")){
+                        correctFlag++;
+                        selectcorrect.start();
+                        countscore();
+                        resetTimer();
+                    }else{
+                        wrongFlag++;
+                        vibrator.vibrate(100);
+                        selectwrong.start();
+                        resetTimer();
+                    }
+                }else if(commandFlag==16){
+                    if(tempPercentage2.equals("50%")){
+                        correctFlag++;
+                        selectcorrect.start();
+                        countscore();
+                        resetTimer();
+                    }else{
+                        wrongFlag++;
+                        vibrator.vibrate(100);
+                        selectwrong.start();
+                        resetTimer();
+                    }
+                }else if(commandFlag==17){
+                    if(tempPercentage2.equals("75%")){
+                        correctFlag++;
+                        selectcorrect.start();
+                        countscore();
+                        resetTimer();
+                    }else{
+                        wrongFlag++;
+                        vibrator.vibrate(100);
+                        selectwrong.start();
+                        resetTimer();
+                    }
+                }else if(commandFlag==18){
+                    if(tempPercentage2.equals("90%")){
+                        correctFlag++;
+                        selectcorrect.start();
+                        countscore();
+                        resetTimer();
+                    }else{
+                        wrongFlag++;
+                        vibrator.vibrate(100);
+                        selectwrong.start();
+                        resetTimer();
+                    }
+                }
+                else{
+                    wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
+                    resetTimer();
+                }
+            }
+        });
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(commandFlag==1) {
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -523,10 +447,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==2){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -536,10 +463,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==3){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -549,10 +479,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==4){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -562,10 +495,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==5){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -575,10 +511,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==6){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -588,10 +527,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==7){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -601,10 +543,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==8){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -614,10 +559,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==9){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -627,10 +575,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==10){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -640,10 +591,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==11){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -653,10 +607,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==12){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -666,10 +623,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==13){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -679,10 +639,13 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==14){
                     correctFlag++;
+                    selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
+                    vibrator.vibrate(100);
+                    selectwrong.start();
                     resetTimer();
                 }
             }
@@ -701,7 +664,21 @@ public class LevelThreeActivity extends AppCompatActivity {
     public void countscore() {
         int scoreTemp;
         String tempTime = TimeLeft.getText().toString();
-        if (tempTime.equals("0:05")) {
+        if(tempTime.equals("0:10")){
+            scoreTemp = 10;
+        }
+        else if(tempTime.equals("0:09")){
+            scoreTemp = 9;
+        }
+        else if(tempTime.equals("0:08")){
+            scoreTemp = 8;
+        }
+        else if(tempTime.equals("0:07")){
+            scoreTemp = 7;
+        }else if(tempTime.equals("0:06")){
+            scoreTemp = 6;
+        }
+        else if(tempTime.equals("0:05")) {
             scoreTemp = 5;
         } else if (tempTime.equals("0:04")) {
             scoreTemp = 4;
@@ -715,5 +692,22 @@ public class LevelThreeActivity extends AppCompatActivity {
             scoreTemp = 0;
         }
         totalScore += scoreTemp;
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bgm.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bgm.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bgm.start();
     }
 }

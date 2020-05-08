@@ -71,24 +71,24 @@ public class RegisterActivity extends AppCompatActivity {
                 if (fname.equals("") || lname.equals("") || uname.equals("") || password.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fields can not be empty", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    User user = new User(fname, lname, uname, pass);
-                    myRef.push().setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(RegisterActivity.this, "Register Successfull", Toast.LENGTH_SHORT).show();
-                            Intent nextIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                            startActivity(nextIntent);
-                            RegisterActivity.this.finish();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(RegisterActivity.this, "Register Unsuccessfull", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+//                else {
+//                    User user = new User(fname, lname, uname, pass);
+//                    myRef.push().setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(RegisterActivity.this, "Register Successfull", Toast.LENGTH_SHORT).show();
+//                            Intent nextIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+//                            startActivity(nextIntent);
+//                            RegisterActivity.this.finish();
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Toast.makeText(RegisterActivity.this, "Register Unsuccessfull", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+////                }
 //                }
-                }
             }
         });
     }

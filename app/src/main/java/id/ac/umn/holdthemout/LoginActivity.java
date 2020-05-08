@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,15 +45,15 @@ public class LoginActivity extends AppCompatActivity{
         username = findViewById(R.id.username);
         loginButton = findViewById(R.id.Btnlogin);
         loginPref = PreferenceManager.getDefaultSharedPreferences(this);
-//        boolean isLogin = loginPref.getBoolean("isLogin", false);
+        boolean isLogin = loginPref.getBoolean("isLogin", false);
 
-//        if(isLogin)
-//        {
-//            loginPref.edit().putBoolean("isLogin", true).commit();
-//            Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(nextIntent);
-//            LoginActivity.this.finish();
-//        }
+        if(isLogin)
+        {
+            loginPref.edit().putBoolean("isLogin", true).commit();
+            Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(nextIntent);
+            LoginActivity.this.finish();
+        }
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity{
                     Toast.makeText(LoginActivity.this, "Profile Saved",Toast.LENGTH_SHORT).show();
                     Intent nextIntent = new Intent(LoginActivity.this, MainActivity.class);
                     nextIntent.putExtra("Username",uname);
-//                    loginPref.edit().putBoolean("isLogin", true).apply();
+                    loginPref.edit().putBoolean("isLogin", true).apply();
                     startActivity(nextIntent);
                     LoginActivity.this.finish();
                 }

@@ -9,31 +9,71 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".HighScoreActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".PreLevelOneActivity" />
-        <activity android:name=".LevelOneActivity" />
-        <activity android:name=".About" />
-        <activity android:name=".Profil_Samuel" />
-        <activity android:name=".Profil_Nataya" />
-        <activity android:name=".Profil_Wisnu" />
-        <activity android:name=".Profil_Neven" />
-        <activity android:name=".PreLevelTwoActivity" />
-        <activity android:name=".LevelTwoActivity" />
-        <activity android:name=".GameOverActivity" />
-        <activity android:name=".PreLevelThreeActivity" />
-        <activity android:name=".LevelThreeActivity" />
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".GlobalHighScoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".HighScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreLevelOneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelOneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".About"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil_Samuel"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil_Nataya"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil_Wisnu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil_Neven"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreLevelTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GameOverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreLevelThreeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelThreeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PreLevelFourActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelFourActivity"
+            android:screenOrientation="portrait" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

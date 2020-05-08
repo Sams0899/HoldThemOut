@@ -89,18 +89,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            android:padding="0dp">
 
-            <ImageButton
+            <TextView
                 android:id="@+id/sidbtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter"/>
+                android:gravity="center"
+                android:textSize="40dp"
+                android:text="GENERATE SID"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -176,18 +178,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            android:padding="0dp">
 
-            <ImageButton
+            <TextView
                 android:id="@+id/encryptbtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
+                android:gravity="center"
+                android:textSize="30dp"
+                android:text="ENCRYPT DATA TRANSMIT"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout

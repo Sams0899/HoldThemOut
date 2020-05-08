@@ -18,12 +18,17 @@ public class PreLevelThreeActivity extends AppCompatActivity {
     private MediaPlayer bgm;
     private Vibrator vibrator;
     public boolean profileFlag=false, signalFlag=false, honeypotsFlag=false, wrongFlag1=false, wrongFlag2=false, wrongFlag3=false;
+    int totalScore;
+    String Username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prelevelthree);
 
+        Intent intent = getIntent();
+        totalScore = intent.getIntExtra("TotalScore",0);
+        Username = intent.getStringExtra("Username");
 
         btnProfile = findViewById(R.id.profileweb);
         btnSignal = findViewById(R.id.analyzesign);
@@ -172,6 +177,8 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (profileFlag==true && signalFlag==true && honeypotsFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
                     Intent nextIntent = new Intent(PreLevelThreeActivity.this, LevelThreeActivity.class);
+                    nextIntent.putExtra("TotalScore", totalScore);
+                    nextIntent.putExtra("Username", Username);
                     startActivity(nextIntent);
                     PreLevelThreeActivity.this.finish();
                 }
