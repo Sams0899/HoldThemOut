@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "229131162784",
+    "firebase_url": "https://holdthemout-f6c6f.firebaseio.com",
+    "project_id": "holdthemout-f6c6f",
+    "storage_bucket": "holdthemout-f6c6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229131162784:android:04acb3ae959d5da231e5c5",
+        "android_client_info": {
+          "package_name": "id.ac.umn.holdthemout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229131162784-807hsq6ckspkc4k5utnlfd6688otceo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-kp3JwpHE4bQMEb_k0aYEoV5TG0psXmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229131162784-807hsq6ckspkc4k5utnlfd6688otceo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

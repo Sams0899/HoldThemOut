@@ -1,158 +1,388 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".PreLevelTwoActivity"
-    android:background="@drawable/background">
+    tools:context=".PreLevelTwoActivity" >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp" >
 
         <TextView
             android:id="@+id/command"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="2"
+            android:layout_height="0dp"
             android:gravity="center"
-            android:padding="10dp"
             android:text="Get Ready For Possible Spoofing Attack!"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/container2"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toTopOf="@+id/container"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.2" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="bottom"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/container3"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/command"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.5" >
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="0dp">
-
-                <ImageButton
-                    android:id="@+id/implementsshbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter" />
-
-                <ImageButton
-                    android:id="@+id/implementidsbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="0dp">
-
-                <ImageButton
-                    android:id="@+id/implementarpwatchbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter" />
-
-                <ImageButton
-                    android:id="@+id/turnonfirewallbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="0dp">
-
-                <ImageButton
-                    android:id="@+id/installantivirusbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter" />
-
-                <ImageButton
-                    android:id="@+id/activatehoneypotsbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter" />
+                app:layout_constraintBottom_toTopOf="@+id/containerinside2"
+                app:layout_constraintLeft_toLeftOf="@+id/container2"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toTopOf="@+id/container2" >
 
                 <ImageButton
                     android:id="@+id/blockalltrafficbtn"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter" />
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside"
+                    app:layout_constraintRight_toLeftOf="@id/implementidsbtn"
+                    app:layout_constraintBottom_toBottomOf="@id/containerinside"
+                    app:layout_constraintDimensionRatio="2:1" />
 
-            </LinearLayout>
+                <ImageButton
+                    android:id="@+id/implementidsbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside"
+                    app:layout_constraintLeft_toRightOf="@+id/blockalltrafficbtn"
+                    app:layout_constraintRight_toRightOf="@id/containerinside"
+                    app:layout_constraintBottom_toBottomOf="@id/containerinside"
+                    app:layout_constraintDimensionRatio="2:1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="top">
+                app:layout_constraintBottom_toTopOf="@+id/containerinside3"
+                app:layout_constraintLeft_toLeftOf="@+id/container2"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toBottomOf="@+id/containerinside" >
 
-                <Button
-                    android:id="@+id/readybtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="Ready!"
-                    android:textSize="10dp" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+                <ImageButton
+                    android:id="@+id/implementarpwatchbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@id/containerinside2"
+                    app:layout_constraintLeft_toLeftOf="@id/containerinside2"
+                    app:layout_constraintRight_toLeftOf="@id/turnonfirewallbtn"
+                    app:layout_constraintBottom_toBottomOf="@id/containerinside2"
+                    app:layout_constraintDimensionRatio="2:1" />
+
+                <ImageButton
+                    android:id="@+id/turnonfirewallbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@id/containerinside2"
+                    app:layout_constraintLeft_toRightOf="@id/implementarpwatchbtn"
+                    app:layout_constraintRight_toRightOf="@id/containerinside2"
+                    app:layout_constraintBottom_toBottomOf="@id/containerinside2"
+                    app:layout_constraintDimensionRatio="2:1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/containerinside4"
+                app:layout_constraintLeft_toLeftOf="@+id/container2"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toBottomOf="@+id/containerinside2" >
+
+                <ImageButton
+                    android:id="@+id/installantivirusbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@id/containerinside3"
+                    app:layout_constraintLeft_toLeftOf="@id/containerinside3"
+                    app:layout_constraintRight_toLeftOf="@id/activatehoneypotsbtn"
+                    app:layout_constraintBottom_toBottomOf="@id/containerinside3"
+                    app:layout_constraintDimensionRatio="2:1" />
+
+                <ImageButton
+                    android:id="@+id/activatehoneypotsbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@id/containerinside3"
+                    app:layout_constraintLeft_toRightOf="@id/installantivirusbtn"
+                    app:layout_constraintRight_toRightOf="@id/containerinside3"
+                    app:layout_constraintBottom_toBottomOf="@id/containerinside3"
+                    app:layout_constraintDimensionRatio="2:1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/container2"
+                app:layout_constraintLeft_toLeftOf="@id/container2"
+                app:layout_constraintRight_toRightOf="@id/container2"
+                app:layout_constraintTop_toBottomOf="@id/containerinside3" >
+
+                <ImageButton
+                    android:id="@+id/implementsshbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@id/containerinside4"
+                    app:layout_constraintLeft_toLeftOf="@id/containerinside4"
+                    app:layout_constraintRight_toRightOf="@id/containerinside4"
+                    app:layout_constraintTop_toTopOf="@id/containerinside4"
+                    app:layout_constraintDimensionRatio="2:1"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintLeft_toLeftOf="@id/container"
+            app:layout_constraintRight_toRightOf="@id/container"
+            app:layout_constraintBottom_toBottomOf="@id/container"
+            app:layout_constraintTop_toBottomOf="@id/container2"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.3" >
+
+            <ImageButton
+                android:id="@+id/readybtn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:padding="10dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@id/startbtn"
+                app:layout_constraintLeft_toLeftOf="@id/container3"
+                app:layout_constraintRight_toRightOf="@id/container3"
+                app:layout_constraintTop_toTopOf="@id/container3"
+                app:layout_constraintDimensionRatio="w,2:1" />
+
+            <ImageButton
+                android:id="@+id/startbtn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:padding="10dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="@id/container3"
+                app:layout_constraintLeft_toLeftOf="@id/container3"
+                app:layout_constraintRight_toRightOf="@id/container3"
+                app:layout_constraintTop_toBottomOf="@id/readybtn"
+                app:layout_constraintDimensionRatio="w,2:1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".PreLevelTwoActivity"-->
+<!--    android:background="@drawable/background">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:layout_marginRight="5dp"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/command"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_weight="2"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="Get Ready For Possible Spoofing Attack!"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="25sp" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="4"-->
+<!--            android:gravity="bottom"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="0dp">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/implementsshbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:padding="0dp"-->
+<!--                    android:scaleType="fitCenter" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/implementidsbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:padding="0dp"-->
+<!--                    android:scaleType="fitCenter" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="0dp">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/implementarpwatchbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:padding="0dp"-->
+<!--                    android:scaleType="fitCenter" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/turnonfirewallbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:padding="0dp"-->
+<!--                    android:scaleType="fitCenter" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="0dp">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/installantivirusbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:padding="0dp"-->
+<!--                    android:scaleType="fitCenter" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/activatehoneypotsbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:padding="0dp"-->
+<!--                    android:scaleType="fitCenter" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/blockalltrafficbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:padding="0dp"-->
+<!--                    android:scaleType="fitCenter" />-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="top">-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/readybtn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Ready!"-->
+<!--                    android:textSize="10dp" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+<!--</LinearLayout>-->

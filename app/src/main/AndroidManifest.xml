@@ -9,8 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".GlobalHighScoreActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LevelFourActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".PreLevelFourActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GlobalHighScoreActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HighScoreActivity"
             android:screenOrientation="portrait" />
@@ -65,12 +72,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".PreLevelFourActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".LevelFourActivity"
-            android:screenOrientation="portrait" />
     </application>
     <uses-permission android:name="android.permission.VIBRATE" />
 
