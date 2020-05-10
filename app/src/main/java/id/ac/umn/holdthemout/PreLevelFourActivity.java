@@ -37,6 +37,7 @@ public class PreLevelFourActivity extends AppCompatActivity {
         btnDisable = findViewById(R.id.disableservices);
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
+        btnStart.setClickable(false);
 
         btnProvide.setImageResource(R.drawable.provide_training_for_staff_off);
         btnOrder.setImageResource(R.drawable.order_staff_to_sign_statement_off);
@@ -178,17 +179,24 @@ public class PreLevelFourActivity extends AppCompatActivity {
                 if (provideFlag==true && orderFlag==true && defineFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
                     btnStart.setImageResource(R.drawable.start_on);
-                    Intent nextIntent = new Intent(PreLevelFourActivity.this, LevelFourActivity.class);
-                    nextIntent.putExtra("TotalScore", totalScore);
-                    nextIntent.putExtra("Username", Username);
-                    startActivity(nextIntent);
-                    PreLevelFourActivity.this.finish();
+                    btnStart.setClickable(true);
                 }
                 else
                 {
                     wrong.start();
                     vibrator.vibrate(500);
                 }
+            }
+        });
+
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nextIntent = new Intent(PreLevelFourActivity.this, LevelFourActivity.class);
+                nextIntent.putExtra("TotalScore", totalScore);
+                nextIntent.putExtra("Username", Username);
+                startActivity(nextIntent);
+                PreLevelFourActivity.this.finish();
             }
         });
     }

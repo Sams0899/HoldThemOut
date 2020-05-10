@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HowToPlayActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="How To Play"
+        android:textSize="48dp" />
+
+    <ImageView
+        android:id="@+id/Image1"
+        android:layout_width="251dp"
+        android:layout_height="523dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="49dp"
+        android:src="@drawable/htp1" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="351dp"
+        android:layout_height="96dp"
+        android:layout_below="@+id/Image1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="-40dp"
+        android:text="Clear the pre-attack stage by pressing the 'Correct' button related with the attack"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Step"
+        android:id="@+id/nextbtn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

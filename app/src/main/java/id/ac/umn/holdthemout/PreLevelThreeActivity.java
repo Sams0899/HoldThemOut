@@ -37,6 +37,7 @@ public class PreLevelThreeActivity extends AppCompatActivity {
         btnAllConn = findViewById(R.id.acceptconnect);
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
+        btnStart.setClickable(false);
 
         btnProfile.setImageResource(R.drawable.profile_web_activity_off);
         btnSignal.setImageResource(R.drawable.analize_incomming_signal_off);
@@ -178,17 +179,24 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                 if (profileFlag==true && signalFlag==true && honeypotsFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
                     btnStart.setImageResource(R.drawable.start_on);
-                    Intent nextIntent = new Intent(PreLevelThreeActivity.this, LevelThreeActivity.class);
-                    nextIntent.putExtra("TotalScore", totalScore);
-                    nextIntent.putExtra("Username", Username);
-                    startActivity(nextIntent);
-                    PreLevelThreeActivity.this.finish();
+                    btnStart.setClickable(true);
                 }
                 else
                 {
                     wrong.start();
                     vibrator.vibrate(500);
                 }
+            }
+        });
+
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nextIntent = new Intent(PreLevelThreeActivity.this, LevelThreeActivity.class);
+                nextIntent.putExtra("TotalScore", totalScore);
+                nextIntent.putExtra("Username", Username);
+                startActivity(nextIntent);
+                PreLevelThreeActivity.this.finish();
             }
         });
     }

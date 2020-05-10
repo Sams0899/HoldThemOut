@@ -39,6 +39,7 @@ public class PreLevelTwoActivity extends AppCompatActivity {
         btnBlock = findViewById(R.id.blockalltrafficbtn);
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
+        btnStart.setClickable(false);
 
         btnInstall.setImageResource(R.drawable.install2_off);
         btnSSH.setImageResource(R.drawable.ssh_off);
@@ -201,17 +202,24 @@ public class PreLevelTwoActivity extends AppCompatActivity {
                 {
 
                     btnStart.setImageResource(R.drawable.start_on);
-                    Intent nextIntent = new Intent(PreLevelTwoActivity.this, LevelTwoActivity.class);
-                    nextIntent.putExtra("TotalScore", totalScore);
-                    nextIntent.putExtra("Username", Username);
-                    startActivity(nextIntent);
-                    PreLevelTwoActivity.this.finish();
+                    btnStart.setClickable(true);
                 }
                 else
                 {
                     wrong.start();
                     vibrator.vibrate(500);
                 }
+            }
+        });
+
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nextIntent = new Intent(PreLevelTwoActivity.this, LevelTwoActivity.class);
+                nextIntent.putExtra("TotalScore", totalScore);
+                nextIntent.putExtra("Username", Username);
+                startActivity(nextIntent);
+                PreLevelTwoActivity.this.finish();
             }
         });
     }

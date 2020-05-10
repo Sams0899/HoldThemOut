@@ -68,6 +68,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnHowToPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(MainActivity.this, HowToPlayActivity.class);
+                bgm.pause();
+                startActivity(startIntent);
+            }
+        });
+
     }
 
     @Override

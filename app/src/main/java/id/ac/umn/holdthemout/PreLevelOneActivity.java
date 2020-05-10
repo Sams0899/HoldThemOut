@@ -38,6 +38,7 @@ public class PreLevelOneActivity extends AppCompatActivity {
         btnBackup = findViewById(R.id.backupdatabtn);
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
+        btnStart.setClickable(false);
 
         btnInstall.setImageResource(R.drawable.install_off);
         btnDistribute.setImageResource(R.drawable.distribute_off);
@@ -169,17 +170,24 @@ public class PreLevelOneActivity extends AppCompatActivity {
                 if (installFlag==true && distributeFlag==true && backupFlag==true && wrongFlag1==false && wrongFlag2==false)
                 {
                     btnStart.setImageResource(R.drawable.start_on);
-                    Intent nextIntent = new Intent(PreLevelOneActivity.this, LevelOneActivity.class);
-                    bgm.stop();
-                    nextIntent.putExtra("Username",Username);
-                    startActivity(nextIntent);
-                    PreLevelOneActivity.this.finish();
+                    btnStart.setClickable(false);
                 }
                 else
                 {
                     wrong.start();
                     vibrator.vibrate(500);
                 }
+            }
+        });
+
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nextIntent = new Intent(PreLevelOneActivity.this, LevelOneActivity.class);
+                bgm.stop();
+                nextIntent.putExtra("Username",Username);
+                startActivity(nextIntent);
+                PreLevelOneActivity.this.finish();
             }
         });
     }
