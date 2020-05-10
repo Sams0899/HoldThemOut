@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 public class PreLevelOneActivity extends AppCompatActivity {
 
-    private ImageButton btnInstall, btnDistribute, btnBackup, btnImplement, btnActivate;
-    private Button btnReady;
+    private ImageButton btnInstall, btnDistribute, btnImplement, btnActivate, btnBackup, btnReady, btnStart;
+//    private Button btnReady;
     private TextView CHEAT;
     public boolean installFlag=false, distributeFlag=false, backupFlag=false, wrongFlag1=false, wrongFlag2=false;
     private LinearLayout.LayoutParams params;
@@ -33,16 +33,18 @@ public class PreLevelOneActivity extends AppCompatActivity {
         CHEAT = findViewById(R.id.command);
         btnInstall = findViewById(R.id.installantivirusbtn);
         btnDistribute = findViewById(R.id.distributepolicybtn);
-        btnBackup = findViewById(R.id.backupdatabtn);
         btnImplement = findViewById(R.id.implementvpnbtn);
         btnActivate = findViewById(R.id.activatehoneypotsbtn);
-        btnReady= findViewById(R.id.readybtn);
+        btnBackup = findViewById(R.id.backupdatabtn);
+        btnReady = findViewById(R.id.readybtn);
+        btnStart = findViewById(R.id.startbtn);
 
         btnInstall.setImageResource(R.drawable.install_off);
         btnDistribute.setImageResource(R.drawable.distribute_off);
         btnImplement.setImageResource(R.drawable.implement_off);
         btnActivate.setImageResource(R.drawable.activate_off);
         btnBackup.setImageResource(R.drawable.backup_off);
+        btnReady.setImageResource(R.drawable.ready_on);
 
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
@@ -166,6 +168,7 @@ public class PreLevelOneActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (installFlag==true && distributeFlag==true && backupFlag==true && wrongFlag1==false && wrongFlag2==false)
                 {
+                    btnStart.setImageResource(R.drawable.start_on);
                     Intent nextIntent = new Intent(PreLevelOneActivity.this, LevelOneActivity.class);
                     bgm.stop();
                     nextIntent.putExtra("Username",Username);

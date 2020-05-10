@@ -12,8 +12,7 @@ import android.widget.TextView;
 
 public class PreLevelTwoActivity extends AppCompatActivity {
 
-    private ImageButton btnSSH, btnIDS, btnARP, btnTurnon, btnInstall,btnActivate, btnBlock;
-    private Button btnReady;
+    private ImageButton btnSSH, btnIDS, btnARP, btnTurnon, btnInstall,btnActivate, btnBlock, btnReady, btnStart;
     private TextView CHEAT,test;
     public boolean SSHFlag=false, IDSFlag=false, ARPFlag=false, turnonFlag=false, wrongFlag1=false, wrongFlag2=false, wrongFlag3=false;
     private MediaPlayer bgm;
@@ -38,7 +37,8 @@ public class PreLevelTwoActivity extends AppCompatActivity {
         btnTurnon = findViewById(R.id.turnonfirewallbtn);
         btnActivate = findViewById(R.id.activatehoneypotsbtn);
         btnBlock = findViewById(R.id.blockalltrafficbtn);
-        btnReady= findViewById(R.id.readybtn);
+        btnReady = findViewById(R.id.readybtn);
+        btnStart = findViewById(R.id.startbtn);
 
         btnInstall.setImageResource(R.drawable.install2_off);
         btnSSH.setImageResource(R.drawable.ssh_off);
@@ -47,6 +47,7 @@ public class PreLevelTwoActivity extends AppCompatActivity {
         btnTurnon.setImageResource(R.drawable.firewall_off);
         btnActivate.setImageResource(R.drawable.honeypot_off);
         btnBlock.setImageResource(R.drawable.block_off);
+        btnReady.setImageResource(R.drawable.ready_on);
 
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
@@ -198,6 +199,8 @@ public class PreLevelTwoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (SSHFlag==true && IDSFlag==true && ARPFlag==true && turnonFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
+
+                    btnStart.setImageResource(R.drawable.start_on);
                     Intent nextIntent = new Intent(PreLevelTwoActivity.this, LevelTwoActivity.class);
                     nextIntent.putExtra("TotalScore", totalScore);
                     nextIntent.putExtra("Username", Username);

@@ -38,7 +38,9 @@ public class HighScoreActivity extends AppCompatActivity {
         sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
 
         LinearLayout ll = findViewById(R.id.linearlayout);
-        LinearLayout mainll = findViewById(R.id.mainlinearlayout);
+        //ini gw matiin - wisnu
+//        LinearLayout mainll = findViewById(R.id.mainlinearlayout);
+        TextView uname = findViewById(R.id.username);
         globalhighscorebtn = findViewById(R.id.GlobalHSBtn);
 
         database = FirebaseDatabase.getInstance();
@@ -87,7 +89,11 @@ public class HighScoreActivity extends AppCompatActivity {
             tvusername.setTextColor(Color.parseColor("#ffffff"));
             tvusername.setLayoutParams(lpusername);
             tvusername.setText(username);
-            mainll.addView(tvusername);
+
+            //ini gw matiin - wisnu
+//            mainll.addView(tvusername);
+            //gw ganti ini
+            uname.setText(username);
 
             User user = new User(highscore, username);
             myRef.child(username).child("hscore").setValue(highscore);

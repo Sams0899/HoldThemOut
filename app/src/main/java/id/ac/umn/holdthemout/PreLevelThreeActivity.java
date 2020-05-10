@@ -12,8 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class PreLevelThreeActivity extends AppCompatActivity {
-    private ImageButton btnProfile, btnSignal, btnHoneypots, btnTurnoff, btnVPN, btnAllConn;
-    private Button btnReady;
+    private ImageButton btnProfile, btnSignal, btnHoneypots, btnTurnoff, btnVPN, btnAllConn, btnReady, btnStart;
     private TextView CHEAT;
     private MediaPlayer bgm;
     private Vibrator vibrator;
@@ -36,7 +35,8 @@ public class PreLevelThreeActivity extends AppCompatActivity {
         btnTurnoff = findViewById(R.id.turnofffirewallbtn);
         btnVPN = findViewById(R.id.implementvpn);
         btnAllConn = findViewById(R.id.acceptconnect);
-        btnReady= findViewById(R.id.readybtn);
+        btnReady = findViewById(R.id.readybtn);
+        btnStart = findViewById(R.id.startbtn);
 
         btnProfile.setImageResource(R.drawable.profile_web_activity_off);
         btnSignal.setImageResource(R.drawable.analize_incomming_signal_off);
@@ -44,6 +44,7 @@ public class PreLevelThreeActivity extends AppCompatActivity {
         btnTurnoff.setImageResource(R.drawable.turn_off_firewall_off);
         btnVPN.setImageResource(R.drawable.implement_vpn_off);
         btnAllConn.setImageResource(R.drawable.accept_all_connection_off);
+        btnReady.setImageResource(R.drawable.ready_on);
 
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
@@ -176,6 +177,7 @@ public class PreLevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (profileFlag==true && signalFlag==true && honeypotsFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
+                    btnStart.setImageResource(R.drawable.start_on);
                     Intent nextIntent = new Intent(PreLevelThreeActivity.this, LevelThreeActivity.class);
                     nextIntent.putExtra("TotalScore", totalScore);
                     nextIntent.putExtra("Username", Username);

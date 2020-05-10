@@ -12,8 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class PreLevelFourActivity extends AppCompatActivity {
-    private ImageButton btnProvide, btnOrder, btnDefine, btnHire, btnAnalyze, btnDisable;
-    private Button btnReady;
+    private ImageButton btnProvide, btnOrder, btnDefine, btnHire, btnAnalyze, btnDisable, btnReady, btnStart;
     private TextView CHEAT;
     private MediaPlayer bgm;
     private Vibrator vibrator;
@@ -24,7 +23,7 @@ public class PreLevelFourActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pre_level_four);
+        setContentView(R.layout.activity_prelevelfour);
 
         Intent intent = getIntent();
         totalScore = intent.getIntExtra("TotalScore",0);
@@ -36,14 +35,16 @@ public class PreLevelFourActivity extends AppCompatActivity {
         btnHire = findViewById(R.id.hirestaff);
         btnAnalyze = findViewById(R.id.analyzesignal);
         btnDisable = findViewById(R.id.disableservices);
-        btnReady= findViewById(R.id.readybtn);
+        btnReady = findViewById(R.id.readybtn);
+        btnStart = findViewById(R.id.startbtn);
 
-        btnProvide.setBackgroundResource(R.drawable.provide_training_for_staff_off);
-        btnOrder.setBackgroundResource(R.drawable.order_staff_to_sign_statement_off);
-        btnDefine.setBackgroundResource(R.drawable.define_rules_and_consequences_off);
-        btnHire.setBackgroundResource(R.drawable.hire_more_staff_off);
-        btnAnalyze.setBackgroundResource(R.drawable.analize_incoming_signal_off);
-        btnDisable.setBackgroundResource(R.drawable.disable_all_services_off);
+        btnProvide.setImageResource(R.drawable.provide_training_for_staff_off);
+        btnOrder.setImageResource(R.drawable.order_staff_to_sign_statement_off);
+        btnDefine.setImageResource(R.drawable.define_rules_and_consequences_off);
+        btnHire.setImageResource(R.drawable.hire_more_staff_off);
+        btnAnalyze.setImageResource(R.drawable.analize_incoming_signal_off);
+        btnDisable.setImageResource(R.drawable.disable_all_services_off);
+        btnReady.setImageResource(R.drawable.ready_on);
 
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
@@ -176,6 +177,7 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (provideFlag==true && orderFlag==true && defineFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
+                    btnStart.setImageResource(R.drawable.start_on);
                     Intent nextIntent = new Intent(PreLevelFourActivity.this, LevelFourActivity.class);
                     nextIntent.putExtra("TotalScore", totalScore);
                     nextIntent.putExtra("Username", Username);
