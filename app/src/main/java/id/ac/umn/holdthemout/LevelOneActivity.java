@@ -46,16 +46,16 @@ public class LevelOneActivity extends AppCompatActivity {
 
         sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
 
-        CHEAT = findViewById(R.id.command);
+//        CHEAT = findViewById(R.id.command);
         TimeLeft = findViewById(R.id.timer);
 
-        CHEAT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent CHEATIntent = new Intent(LevelOneActivity.this, PreLevelTwoActivity.class);
-                startActivity(CHEATIntent);
-            }
-        });
+//        CHEAT.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent CHEATIntent = new Intent(LevelOneActivity.this, PreLevelTwoActivity.class);
+//                startActivity(CHEATIntent);
+//            }
+//        });
 
         bgm = MediaPlayer.create(LevelOneActivity.this, R.raw.ingametest);
         bgm.start();
@@ -128,12 +128,22 @@ public class LevelOneActivity extends AppCompatActivity {
         btnInform.setClickable(false);
         btnClean.setClickable(false);
 
-        Intent intentNext = new Intent(LevelOneActivity.this, PreLevelTwoActivity.class);
-        correctFlag++; //EXCEPTION HANDLING
-        intentNext.putExtra("TotalScore",totalScore);
-        intentNext.putExtra("Username", Username);
-        startActivity(intentNext);
-        LevelOneActivity.this.finish();
+        commandView = findViewById(R.id.command);
+
+        commandView.setText("YOU WIN! Click Here to advance...");
+
+        commandView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentNext = new Intent(LevelOneActivity.this, PreLevelTwoActivity.class);
+                correctFlag++; //EXCEPTION HANDLING
+                intentNext.putExtra("TotalScore",totalScore);
+                intentNext.putExtra("Username", Username);
+                startActivity(intentNext);
+                LevelOneActivity.this.finish();
+            }
+        });
+
     }
 
     private void gameOverLose(){
@@ -468,7 +478,13 @@ public class LevelOneActivity extends AppCompatActivity {
 
         if(correctFlag==7){
             Log.d("IN WIN", "");
-            commandView.setText("");
+
+            TimeLeft.setVisibility(View.INVISIBLE);
+            bgm.stop();
+            selectcorrect.stop();
+            final MediaPlayer win = MediaPlayer.create(LevelOneActivity.this, R.raw.subwin);
+            win.start();
+
             gameOverWin();
         }
         if(wrongFlag==3){

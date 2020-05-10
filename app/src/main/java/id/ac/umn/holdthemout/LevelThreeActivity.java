@@ -184,12 +184,21 @@ public class LevelThreeActivity extends AppCompatActivity {
         btnConfig.setClickable(false);
         btnPray.setClickable(false);
 
-        correctFlag++; //EXCEPTION HANDLING
-        Intent intentNext = new Intent(LevelThreeActivity.this, PreLevelFourActivity.class);
-        intentNext.putExtra("TotalScore", totalScore);
-        intentNext.putExtra("Username", Username);
-        startActivity(intentNext);
-        LevelThreeActivity.this.finish();
+        commandView = findViewById(R.id.command);
+
+        commandView.setText("YOU WIN! Click Here to advance...");
+
+        commandView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                correctFlag++; //EXCEPTION HANDLING
+                Intent intentNext = new Intent(LevelThreeActivity.this, PreLevelFourActivity.class);
+                intentNext.putExtra("TotalScore", totalScore);
+                intentNext.putExtra("Username", Username);
+                startActivity(intentNext);
+                LevelThreeActivity.this.finish();
+            }
+        });
     }
 
     private void gameOverLose(){
@@ -667,7 +676,13 @@ public class LevelThreeActivity extends AppCompatActivity {
         });
         if(correctFlag==15){
             Log.d("IN WIN", "");
-            commandView.setText("");
+
+            TimeLeft.setVisibility(View.INVISIBLE);
+            bgm.stop();
+            selectcorrect.stop();
+            final MediaPlayer win = MediaPlayer.create(LevelThreeActivity.this, R.raw.subwin);
+            win.start();
+
             gameOverWin();
         }
         if(wrongFlag==3){
