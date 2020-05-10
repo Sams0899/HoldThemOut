@@ -1,69 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".About"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="50dp"
-        android:text="ABOUT US"/>
+        android:layout_height="150dp"
+        android:background="@drawable/gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="113dp"
+            android:layout_marginTop="73dp"
+            android:layout_marginEnd="113dp"
+            android:layout_marginBottom="73dp"
+            android:text="@string/members"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="529dp"
         android:orientation="vertical"
-        android:gravity="bottom">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/nama1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="top">
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:id="@+id/btnNeven"
-                android:text="Neven" />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:id="@+id/btnSamuel"
-                android:text="Samuel" />
-        </LinearLayout>
-        <LinearLayout
+            android:layout_height="90dp"
+            android:layout_margin="7sp"
+            android:text="@string/neven_yusuf_n_00000025750_n_gregoriusneven_yahoo_com_n"
+            android:textAlignment="center"
+            android:textColor="#034245"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nama2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="top">
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:id="@+id/btnWisnu"
-                android:text="Wisnu" />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:id="@+id/btnNataya"
-                android:text="Nataya" />
-        </LinearLayout>
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_margin="7sp"
+            android:layout_marginBottom="2sp"
+            android:text="@string/samuel_antoinne_mulyadi_n_00000025003_n_samuel_antoinne99_gmail_com_n"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#034245"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nama3"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_margin="7sp"
+            android:text="@string/antonius_wisnu_setyawan_n_00000025802_n_n"
+            android:textAlignment="center"
+            android:textColor="#034245"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nama4"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_margin="7sp"
+            android:text="@string/nataya_apriliani_kertawijaya_n_00000025728_n_natayatayo_gmail_com"
+            android:textAlignment="center"
+            android:textColor="#034245"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

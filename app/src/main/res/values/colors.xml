@@ -7,4 +7,7 @@
     <color name="highscore">#29257C</color>
     <color name="scores">#817CEE</color>
     <color name="red">#ff0004</color>
+    <color name="text">#000000</color>
+
+
 </resources>

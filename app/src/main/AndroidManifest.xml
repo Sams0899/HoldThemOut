@@ -36,18 +36,6 @@
             android:name=".About"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Profil_Samuel"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Profil_Nataya"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Profil_Wisnu"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Profil_Neven"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".PreLevelTwoActivity"
             android:screenOrientation="portrait" />
         <activity
