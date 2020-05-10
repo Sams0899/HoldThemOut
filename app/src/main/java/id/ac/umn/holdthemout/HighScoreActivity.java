@@ -60,7 +60,6 @@ public class HighScoreActivity extends AppCompatActivity {
         else
         {
             StringBuffer buffer = new StringBuffer();
-//            StringBuffer bufferusername = new StringBuffer();
 
             cursorusername.moveToFirst();
             username = cursorusername.getString(cursorusername.getColumnIndex("Username"));
@@ -71,7 +70,6 @@ public class HighScoreActivity extends AppCompatActivity {
             while(c.moveToNext())
             {
                 buffer.append(""+c.getString(2)+"\n\n");
-//                bufferusername.append(c.getString(1));
             }
             TextView tv = new TextView(getApplicationContext());
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(

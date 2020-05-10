@@ -14,10 +14,8 @@ import android.widget.TextView;
 public class PreLevelOneActivity extends AppCompatActivity {
 
     private ImageButton btnInstall, btnDistribute, btnImplement, btnActivate, btnBackup, btnReady, btnStart;
-//    private Button btnReady;
     private TextView CHEAT;
     public boolean installFlag=false, distributeFlag=false, backupFlag=false, wrongFlag1=false, wrongFlag2=false;
-    private LinearLayout.LayoutParams params;
     private MediaPlayer bgm;
     private Vibrator vibrator;
     String Username;
@@ -57,12 +55,6 @@ public class PreLevelOneActivity extends AppCompatActivity {
         final MediaPlayer wrong = MediaPlayer.create(PreLevelOneActivity.this, R.raw.wrong);
         final MediaPlayer selectcorrect = MediaPlayer.create(PreLevelOneActivity.this, R.raw.selectcorrect);
 
-//        params = (LinearLayout.LayoutParams) btnInstall.getLayoutParams();
-//        params.height = 75;
-//        params.width = 150;
-//        btnInstall.setLayoutParams(params);
-//        btnInstall.setScaleType(ImageView.ScaleType.FIT_XY);
-//        btnDistribute
 
         CHEAT.setOnClickListener(new View.OnClickListener() {
             @Override

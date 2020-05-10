@@ -30,9 +30,12 @@ public class GameOverActivity extends AppCompatActivity {
         bgm = MediaPlayer.create(GameOverActivity.this, R.raw.gameovertest);
         bgm.start();
 
+        final MediaPlayer select = MediaPlayer.create(GameOverActivity.this, R.raw.select);
+
         Btnmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                select.start();
                 Intent intent = new Intent(GameOverActivity.this, MainActivity.class);
                 startActivity(intent);
                 GameOverActivity.this.finish();

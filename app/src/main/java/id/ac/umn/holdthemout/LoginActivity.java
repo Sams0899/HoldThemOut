@@ -25,13 +25,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity{
 
-    FirebaseDatabase database;
-    DatabaseReference myRef;
     SQLiteDatabase sqLiteDatabase;
-    private EditText username, password;
+    private EditText username;
     String uname;
-    private Button loginButton, registerButton;
-    SharedPreferences loginPref, checkLogin;
+    private Button loginButton;
+    SharedPreferences loginPref;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

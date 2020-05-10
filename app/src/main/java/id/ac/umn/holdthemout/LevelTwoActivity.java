@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class LevelTwoActivity extends AppCompatActivity {
 
     private static final long starttimeinmillis = 8000;
-    private TextView commandView, scoreView,TimeLeft, CHEAT, usernametest, highscoretest;
+    private TextView commandView, scoreView,TimeLeft, CHEAT;
     private ImageButton btnHTTPS, btnLogout, btnSID256, btnSID512, btnSID3512, btnVPN, btnEncrypt3224, btnEncrypt3256, btnEncrypt3512, btnUpdate;
 
     private CountDownTimer countdowntimer;
@@ -37,8 +37,6 @@ public class LevelTwoActivity extends AppCompatActivity {
     public String Username;
 
     SQLiteDatabase sqLiteDatabase;
-
-//    SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +87,6 @@ public class LevelTwoActivity extends AppCompatActivity {
             public void onFinish() {
                 resetTimer();
                 attackStart();
-                //KALO GA DI PENCET SELAMA 30 DETIK ISI DISINIIIIII
-                //KALO GA DI PENCET SELAMA 5 DETIK BELOM DI EXCEPT HANDLE
             }
         }.start();
 //        timerrunning = true;
@@ -128,17 +124,6 @@ public class LevelTwoActivity extends AppCompatActivity {
         btnEncrypt3256.setClickable(false);
         btnEncrypt3224.setClickable(false);
         btnEncrypt3512.setClickable(false);
-
-//        /////////////COBA HIGHSCORE
-//        Log.d("USERNAMEEEEEEEEEEEEEEE", "Username :" + Username);
-//
-////        Cursor c = sqLiteDatabase.rawQuery("Select * From User",null);
-////        String username = c.getString(1);
-//        String insertTotalScore = String.valueOf(totalScore);
-//
-//        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
-//
-//        //////////////////
 
         Intent intentNext = new Intent(LevelTwoActivity.this, PreLevelThreeActivity.class);
         correctFlag++; //EXCEPTION HANDLING

@@ -23,7 +23,6 @@ public class LevelOneActivity extends AppCompatActivity {
     private ImageButton btnUpdate, btnDont, btnApprove, btnInform, btnClean;
 
     private CountDownTimer countdowntimer;
-    //    private boolean timerrunning;
     private long timeleft = starttimeinmillis;
 
     public double commandFlag;
@@ -35,9 +34,6 @@ public class LevelOneActivity extends AppCompatActivity {
     private Vibrator vibrator;
     String Username;
     SQLiteDatabase sqLiteDatabase;
-
-//    public Timer timer = new Timer();
-//    public final Handler handler = new Handler();
 
 
     @Override
@@ -87,21 +83,6 @@ public class LevelOneActivity extends AppCompatActivity {
 
     }
 
-//    public void startTimer(){
-//
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        attackStart();
-//                    }
-//                });
-//            }
-//        }, 1000, 5000);
-//    }
-
     private void startTimer(){
         attackStart();
         countdowntimer = new CountDownTimer(starttimeinmillis,1000) {
@@ -117,7 +98,6 @@ public class LevelOneActivity extends AppCompatActivity {
                 attackStart();
             }
         }.start();
-//        timerrunning = true;
     }
 
     private void resetTimer() {
@@ -147,10 +127,6 @@ public class LevelOneActivity extends AppCompatActivity {
         btnApprove.setClickable(false);
         btnInform.setClickable(false);
         btnClean.setClickable(false);
-
-//        if(wrongFlag==0) totalScore = totalScore + 30;
-//        else if(wrongFlag==1) totalScore = totalScore +20;
-//        else if(wrongFlag==2) totalScore = totalScore +10;
 
         Intent intentNext = new Intent(LevelOneActivity.this, PreLevelTwoActivity.class);
         correctFlag++; //EXCEPTION HANDLING
@@ -185,11 +161,6 @@ public class LevelOneActivity extends AppCompatActivity {
         commandView = findViewById(R.id.command);
         scoreView = findViewById(R.id.score);
 
-//        btnUpdate.setClickable(false);
-//        btnDont.setClickable(false);
-//        btnApprove.setClickable(false);
-//        btnInform.setClickable(false);
-//        btnClean.setClickable(false);
         updateFlag = false;
         dontFlag = false;
         approveFlag = false;

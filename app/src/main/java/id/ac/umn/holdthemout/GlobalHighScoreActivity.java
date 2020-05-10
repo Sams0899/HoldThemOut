@@ -20,16 +20,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class GlobalHighScoreActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference ref;
-    String username, value;
     Button btnlocalhs;
-    int highscore;
-
+    ArrayList<String> dataArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,22 +62,16 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
                      StringBuffer bufferUsername = new StringBuffer();
                      StringBuffer bufferHighscore = new StringBuffer();
 
+                     dataArr = new ArrayList<>();
+
                      for(DataSnapshot ds : dataSnapshot.getChildren())
                      {
-                         bufferUsername.append(" " + ds.child("uname").getValue(String.class) + "           " + ds.child("hscore").getValue(Long.class) + "\n\n");
-//                         bufferHighscore.append(" " + ds.child("hscore").getValue(Long.class));
+                         dataArr.add(" " + ds.child("uname").getValue(String.class) + "           " + ds.child("hscore").getValue(Long.class) + "\n\n");
+//                       bufferUsername.append(" " + ds.child("uname").getValue(String.class) + "           " + ds.child("hscore").getValue(Long.class) + "\n\n");
                      }
 
-//                 highscore = (Integer) dataSnapshot.child("hscore").getValue();
-
-
-//                 bufferUsername.append(dataSnapshot.getValue().toString());
+                     Collections.reverse(dataArr);
                      User user = dataSnapshot.getValue(User.class);
-//                     username = user.getUname();
-
-
-//                 bufferUsername.append(dataSnapshot.child(""));
-//                 bufferHighscore.append(highscore);
 
                  TextView tv = new TextView(getApplicationContext());
                  LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -86,15 +80,19 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
                  tv.setTextSize(30);
                  tv.setTextColor(Color.parseColor("#ffffff"));
                  tv.setLayoutParams(lp);
-                 tv.setText(bufferUsername.toString());
-                 ll.addView(tv);
 
-//                 TextView tv2 = new TextView(getApplicationContext());
-//                 tv2.setTextSize(30);
-//                 tv2.setTextColor(Color.parseColor("#ffffff"));
-//                 tv2.setLayoutParams(lp);
-//                 tv2.setText(bufferHighscore.toString());
-//                 ll.addView(tv2);
+//                 int arraySize = dataArr.size();
+//                 for(int i = 0; i < arraySize; i++) {
+//                     tv.append(dataArr[i]);
+//                 }
+                     String listString = "";
+
+                     for (String s : dataArr) {
+                         listString += s + " ";
+                     }
+                     tv.setText(listString);
+//                 tv.setText(dataArr.toString());
+                 ll.addView(tv);
                  }
 
              }

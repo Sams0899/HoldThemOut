@@ -24,7 +24,6 @@ public class LevelFourActivity extends AppCompatActivity {
     private ImageButton btnPayment,btnChangePass, btnBlock, btnHoldTongue, btnThrowbbq, btnFireStaff,btnHoldCampaign,btnHearStaff;
     public String TempPercentage;
     private CountDownTimer countdowntimer;
-    //    private boolean timerrunning;
     private long timeleft = starttimeinmillis;
 
     public double commandFlag;
@@ -37,9 +36,6 @@ public class LevelFourActivity extends AppCompatActivity {
     public String Username;
 
     SQLiteDatabase sqLiteDatabase;
-
-//    public Timer timer = new Timer();
-//    public final Handler handler = new Handler();
 
 
     @Override
@@ -70,20 +66,6 @@ public class LevelFourActivity extends AppCompatActivity {
 
     }
 
-    //    public void startTimer(){
-//
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        attackStart();
-//                    }
-//                });
-//            }
-//        }, 1000, 5000);
-//    }
     public void Seebbar(){
         payment = (SeekBar)findViewById(R.id.payment);
         payment.incrementProgressBy(10);
@@ -127,11 +109,8 @@ public class LevelFourActivity extends AppCompatActivity {
             public void onFinish() {
                 resetTimer();
                 attackStart();
-                //KALO GA DI PENCET SELAMA 30 DETIK ISI DISINIIIIII
-                //KALO GA DI PENCET SELAMA 5 DETIK BELOM DI EXCEPT HANDLE
             }
         }.start();
-//        timerrunning = true;
     }
 
     private void resetTimer() {
@@ -227,14 +206,6 @@ public class LevelFourActivity extends AppCompatActivity {
         btnHoldCampaign = findViewById(R.id.holdcampaign);
         btnHearStaff = findViewById(R.id.hearstaff);
         btnPayment = findViewById(R.id.adjpayment);
-
-//        btnChangePass.setBackgroundResource(R.drawable.change_all_passwords_on);
-//        btnBlock.setBackgroundResource(R.drawable.block_accounts_on);
-//        btnHoldTongue.setBackgroundResource(R.drawable.hold_their_tongues_on);
-//        btnThrowbbq.setBackgroundResource(R.drawable.throw_a_bbq_party_on);
-//        btnFireStaff.setBackgroundResource(R.drawable.fire_a_staff_on);
-//        btnHoldCampaign.setBackgroundResource(R.drawable.hold_a_campaign_on);
-//        btnHearStaff.setBackgroundResource(R.drawable.hear_staff_s_counsel_on);
 
 
         scoreView.setText("Score : " + totalScore);

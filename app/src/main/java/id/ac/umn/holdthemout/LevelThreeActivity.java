@@ -29,7 +29,6 @@ public class LevelThreeActivity extends AppCompatActivity {
     private ImageButton btnFilter, btnThrottle,btnIntercept, btnBand10, btnBand30, btnBand50, btnDrpAll,btnDrpHalf,btnEncrypt,btnTurnOn,btnUpdate,btnFTP,btnGCD, btnSCD,btnConfig,btnPray;
 
     private CountDownTimer countdowntimer;
-    //    private boolean timerrunning;
     private long timeleft = starttimeinmillis;
     public String tempPercentage, tempPercentage2;
     public double commandFlag;
@@ -42,10 +41,6 @@ public class LevelThreeActivity extends AppCompatActivity {
     public String Username;
 
     SQLiteDatabase sqLiteDatabase;
-
-//    public Timer timer = new Timer();
-//    public final Handler handler = new Handler();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,20 +69,6 @@ public class LevelThreeActivity extends AppCompatActivity {
 
     }
 
-//    public void startTimer(){
-//
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        attackStart();
-//                    }
-//                });
-//            }
-//        }, 1000, 5000);
-//    }
     public void Seebbar(){
         Filter = (SeekBar)findViewById(R.id.seekfilter);
         Traffic = (SeekBar)findViewById(R.id.seektraffic);
@@ -158,11 +139,8 @@ public class LevelThreeActivity extends AppCompatActivity {
             public void onFinish() {
                 resetTimer();
                 attackStart();
-                //KALO GA DI PENCET SELAMA 30 DETIK ISI DISINIIIIII
-                //KALO GA DI PENCET SELAMA 5 DETIK BELOM DI EXCEPT HANDLE
             }
         }.start();
-//        timerrunning = true;
     }
 
     private void resetTimer() {

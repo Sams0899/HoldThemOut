@@ -30,9 +30,12 @@ public class WinActivity extends AppCompatActivity {
         bgm = MediaPlayer.create(WinActivity.this, R.raw.win);
         bgm.start();
 
+        final MediaPlayer select = MediaPlayer.create(WinActivity.this, R.raw.select);
+
         Btnmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                select.start();
                 Intent intent = new Intent(WinActivity.this, MainActivity.class);
                 startActivity(intent);
                 WinActivity.this.finish();
