@@ -58,6 +58,7 @@ public class PreLevelTwoActivity extends AppCompatActivity {
 
         final MediaPlayer select = MediaPlayer.create(PreLevelTwoActivity.this, R.raw.select);
         final MediaPlayer wrong = MediaPlayer.create(PreLevelTwoActivity.this, R.raw.wrong);
+        final MediaPlayer selectcorrect = MediaPlayer.create(PreLevelTwoActivity.this, R.raw.selectcorrect);
 
         CHEAT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,9 +201,17 @@ public class PreLevelTwoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (SSHFlag==true && IDSFlag==true && ARPFlag==true && turnonFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
-
+                    selectcorrect.start();
                     btnStart.setImageResource(R.drawable.start_on);
                     btnStart.setClickable(true);
+                    btnInstall.setClickable(false);
+                    btnSSH.setClickable(false);
+                    btnIDS.setClickable(false);
+                    btnARP.setClickable(false);
+                    btnTurnon.setClickable(false);
+                    btnActivate.setClickable(false);
+                    btnBlock.setClickable(false);
+                    btnReady.setClickable(false);
                 }
                 else
                 {

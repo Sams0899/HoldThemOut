@@ -2,7 +2,9 @@
 
 package id.ac.umn.holdthemout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -39,6 +41,8 @@ public class LevelThreeActivity extends AppCompatActivity {
 
     public String Username;
 
+    SQLiteDatabase sqLiteDatabase;
+
 //    public Timer timer = new Timer();
 //    public final Handler handler = new Handler();
 
@@ -48,6 +52,8 @@ public class LevelThreeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levelthree);
         TimeLeft = findViewById(R.id.timer);
+
+        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
 
         Intent intent = getIntent();
         totalScore = intent.getIntExtra("TotalScore",0);
@@ -181,7 +187,7 @@ public class LevelThreeActivity extends AppCompatActivity {
         TimeLeft.setText(timeLeftText);
     }
 
-    private void gameOver(){
+    private void gameOverWin(){
         if(countdowntimer != null){
             countdowntimer.cancel();
         }
@@ -204,6 +210,37 @@ public class LevelThreeActivity extends AppCompatActivity {
         Intent intentNext = new Intent(LevelThreeActivity.this, PreLevelFourActivity.class);
         intentNext.putExtra("TotalScore", totalScore);
         intentNext.putExtra("Username", Username);
+        startActivity(intentNext);
+        LevelThreeActivity.this.finish();
+    }
+
+    private void gameOverLose(){
+        if(countdowntimer != null){
+            countdowntimer.cancel();
+        }
+        btnUpdate.setClickable(false);
+        btnIntercept.setClickable(false);
+        btnBand10.setClickable(false);
+        btnBand30.setClickable(false);
+        btnBand50.setClickable(false);
+        btnDrpHalf.setClickable(false);
+        btnDrpAll.setClickable(false);
+        btnEncrypt.setClickable(false);
+        btnTurnOn.setClickable(false);
+        btnFTP.setClickable(false);
+        btnGCD.setClickable(false);
+        btnSCD.setClickable(false);
+        btnConfig.setClickable(false);
+        btnPray.setClickable(false);
+
+        String insertTotalScore = String.valueOf(totalScore);
+
+        wrongFlag++; //EXCEPTION HANDLING
+
+        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
+
+        Intent intentNext = new Intent(LevelThreeActivity.this, GameOverActivity.class);
+        intentNext.putExtra("TotalScore",totalScore);
         startActivity(intentNext);
         LevelThreeActivity.this.finish();
     }
@@ -652,13 +689,13 @@ public class LevelThreeActivity extends AppCompatActivity {
         });
         if(correctFlag==15){
             Log.d("IN WIN", "");
-            commandView.setText("YOU WIN!!!");
-            gameOver();
+            commandView.setText("");
+            gameOverWin();
         }
         if(wrongFlag==3){
             Log.d("IN LOSE", "");
-            commandView.setText("YOU LOSE!!!");
-            gameOver();
+            commandView.setText("");
+            gameOverLose();
         }
     }
     public void countscore() {

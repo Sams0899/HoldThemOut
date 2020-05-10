@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class GameOverActivity extends AppCompatActivity {
+public class WinActivity extends AppCompatActivity {
 
     private MediaPlayer bgm;
     Button Btnmenu;
@@ -17,7 +17,7 @@ public class GameOverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_over);
+        setContentView(R.layout.activity_win);
 
         Intent intent = getIntent();
         totalScore = intent.getIntExtra("TotalScore",0);
@@ -27,15 +27,15 @@ public class GameOverActivity extends AppCompatActivity {
 
         score.setText("Your Final Score: " + totalScore);
 
-        bgm = MediaPlayer.create(GameOverActivity.this, R.raw.gameovertest);
+        bgm = MediaPlayer.create(WinActivity.this, R.raw.win);
         bgm.start();
 
         Btnmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameOverActivity.this, MainActivity.class);
+                Intent intent = new Intent(WinActivity.this, MainActivity.class);
                 startActivity(intent);
-                GameOverActivity.this.finish();
+                WinActivity.this.finish();
             }
         });
     }

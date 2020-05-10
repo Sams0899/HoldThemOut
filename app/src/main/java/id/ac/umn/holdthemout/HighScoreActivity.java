@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,8 @@ public class HighScoreActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("Users");
+
+        final MediaPlayer select = MediaPlayer.create(HighScoreActivity.this, R.raw.select);
 
         Cursor c = sqLiteDatabase.rawQuery("Select * From User Order By Highscore * 1 Desc",null);
         Cursor cursorusername = sqLiteDatabase.rawQuery("Select Username From User",null);
@@ -103,6 +106,7 @@ public class HighScoreActivity extends AppCompatActivity {
         globalhighscorebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                select.start();
                 Intent nextIntent = new Intent(HighScoreActivity.this, GlobalHighScoreActivity.class);
                 startActivity(nextIntent);
                 HighScoreActivity.this.finish();

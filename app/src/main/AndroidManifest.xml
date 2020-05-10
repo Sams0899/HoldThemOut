@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".HowToPlayActivity"></activity>
+        <activity android:name=".WinActivity"></activity>
+        <activity android:name=".HowToPlayActivity" />
         <activity
             android:name=".LevelFourActivity"
             android:screenOrientation="portrait" />
@@ -74,8 +75,8 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

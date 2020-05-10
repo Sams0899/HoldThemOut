@@ -3,9 +3,13 @@ package id.ac.umn.holdthemout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +27,7 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference ref;
     String username, value;
+    Button btnlocalhs;
     int highscore;
 
 
@@ -32,6 +37,9 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_global_high_score);
 
         final LinearLayout ll = findViewById(R.id.linearlayout);
+        btnlocalhs = findViewById(R.id.LocalHSBtn);
+
+        final MediaPlayer select = MediaPlayer.create(GlobalHighScoreActivity.this, R.raw.select);
 
          database = FirebaseDatabase.getInstance();
          ref = database.getReference("Users");
@@ -94,6 +102,16 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
              @Override
              public void onCancelled(@NonNull DatabaseError databaseError) {
 
+             }
+         });
+
+         btnlocalhs.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 select.start();
+                 Intent intent = new Intent(GlobalHighScoreActivity.this, HighScoreActivity.class);
+                 startActivity(intent);
+                 GlobalHighScoreActivity.this.finish();
              }
          });
 

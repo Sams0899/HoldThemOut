@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         bgm.start();
         bgm.setLooping(true);
 
+        final MediaPlayer select = MediaPlayer.create(MainActivity.this, R.raw.select);
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(MainActivity.this, About.class);
+                select.start();
                 bgm.pause();
                 startActivity(startIntent);
             }
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(MainActivity.this, HighScoreActivity.class);
+                select.start();
                 bgm.pause();
                 startActivity(startIntent);
             }
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent startIntent = new Intent(MainActivity.this, HowToPlayActivity.class);
                 bgm.pause();
+                select.start();
                 startActivity(startIntent);
             }
         });

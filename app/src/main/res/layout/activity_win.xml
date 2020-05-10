@@ -4,22 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameOverActivity"
+    tools:context=".WinActivity"
     android:background="@drawable/background">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GAME OVER"
-        android:textColor="@color/red"
+        android:text="YOU WIN!"
+        android:textColor="@color/white"
         android:textSize="60dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="YOU LOSE"
-        android:textColor="@color/red"
-        android:textSize="50dp"/>
 
     //BUAT SCORE
     <TextView

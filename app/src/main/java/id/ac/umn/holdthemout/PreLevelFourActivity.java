@@ -55,6 +55,7 @@ public class PreLevelFourActivity extends AppCompatActivity {
 
         final MediaPlayer select = MediaPlayer.create(PreLevelFourActivity.this, R.raw.select);
         final MediaPlayer wrong = MediaPlayer.create(PreLevelFourActivity.this, R.raw.wrong);
+        final MediaPlayer selectcorrect = MediaPlayer.create(PreLevelFourActivity.this, R.raw.selectcorrect);
 
         CHEAT = findViewById(R.id.command);
 
@@ -178,8 +179,16 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (provideFlag==true && orderFlag==true && defineFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
+                    selectcorrect.start();
                     btnStart.setImageResource(R.drawable.start_on);
                     btnStart.setClickable(true);
+                    btnProvide.setClickable(false);
+                    btnOrder.setClickable(false);
+                    btnDefine.setClickable(false);
+                    btnHire.setClickable(false);
+                    btnAnalyze.setClickable(false);
+                    btnDisable.setClickable(false);
+                    btnReady.setClickable(false);
                 }
                 else
                 {

@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="Get Ready For Possible DDoS Attack!"
+            android:text="Get Ready For Possible Insider Attack!"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="30sp"

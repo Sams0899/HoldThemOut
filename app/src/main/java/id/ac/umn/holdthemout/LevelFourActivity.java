@@ -156,7 +156,7 @@ public class LevelFourActivity extends AppCompatActivity {
         TimeLeft.setText(timeLeftText);
     }
 
-    private void gameOver(){
+    private void gameOverWin(){
         if(countdowntimer != null){
             countdowntimer.cancel();
         }
@@ -179,7 +179,38 @@ public class LevelFourActivity extends AppCompatActivity {
 
         //////////////////
 
-        Intent intentNext = new Intent(LevelFourActivity.this, MainActivity.class);
+        Intent intentNext = new Intent(LevelFourActivity.this, WinActivity.class);
+        startActivity(intentNext);
+        LevelFourActivity.this.finish();
+    }
+
+    private void gameOverLose(){
+        if(countdowntimer != null){
+            countdowntimer.cancel();
+        }
+        btnChangePass.setClickable(false);
+        btnBlock.setClickable(false);
+        btnHoldTongue.setClickable(false);
+        btnThrowbbq.setClickable(false);
+        btnFireStaff.setClickable(false);
+        btnHoldCampaign.setClickable(false);
+        btnHearStaff.setClickable(false);
+
+        /////////////COBA HIGHSCORE
+        Log.d("USERNAMEEEEEEEEEEEEEEE", "Username :" + Username);
+
+//        Cursor c = sqLiteDatabase.rawQuery("Select * From User",null);
+//        String username = c.getString(1);
+        String insertTotalScore = String.valueOf(totalScore);
+
+        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
+
+        //////////////////
+
+        wrongFlag++; //EXCEPTION HANDLING
+
+        Intent intentNext = new Intent(LevelFourActivity.this, GameOverActivity.class);
+        intentNext.putExtra("TotalScore",totalScore);
         startActivity(intentNext);
         LevelFourActivity.this.finish();
     }
@@ -459,13 +490,13 @@ public class LevelFourActivity extends AppCompatActivity {
         });
         if(correctFlag==15){
             Log.d("IN WIN", "");
-            commandView.setText("YOU WIN!!!");
-            gameOver();
+            commandView.setText("");
+            gameOverWin();
         }
         if(wrongFlag==3){
             Log.d("IN LOSE", "");
-            commandView.setText("YOU LOSE!!!");
-            gameOver();
+            commandView.setText("");
+            gameOverLose();
         }
     }
     public void countscore() {

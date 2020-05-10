@@ -55,6 +55,7 @@ public class PreLevelThreeActivity extends AppCompatActivity {
 
         final MediaPlayer select = MediaPlayer.create(PreLevelThreeActivity.this, R.raw.select);
         final MediaPlayer wrong = MediaPlayer.create(PreLevelThreeActivity.this, R.raw.wrong);
+        final MediaPlayer selectcorrect = MediaPlayer.create(PreLevelThreeActivity.this, R.raw.selectcorrect);
 
         CHEAT = findViewById(R.id.command);
 
@@ -178,8 +179,16 @@ public class PreLevelThreeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (profileFlag==true && signalFlag==true && honeypotsFlag==true && wrongFlag1==false && wrongFlag2==false && wrongFlag3==false)
                 {
+                    selectcorrect.start();
                     btnStart.setImageResource(R.drawable.start_on);
                     btnStart.setClickable(true);
+                    btnProfile.setClickable(false);
+                    btnSignal.setClickable(false);
+                    btnHoneypots.setClickable(false);
+                    btnTurnoff.setClickable(false);
+                    btnVPN.setClickable(false);
+                    btnAllConn.setClickable(false);
+                    btnReady.setClickable(false);
                 }
                 else
                 {

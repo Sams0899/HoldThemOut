@@ -55,6 +55,7 @@ public class PreLevelOneActivity extends AppCompatActivity {
 
         final MediaPlayer mediaPlayer = MediaPlayer.create(PreLevelOneActivity.this, R.raw.select);
         final MediaPlayer wrong = MediaPlayer.create(PreLevelOneActivity.this, R.raw.wrong);
+        final MediaPlayer selectcorrect = MediaPlayer.create(PreLevelOneActivity.this, R.raw.selectcorrect);
 
 //        params = (LinearLayout.LayoutParams) btnInstall.getLayoutParams();
 //        params.height = 75;
@@ -170,7 +171,14 @@ public class PreLevelOneActivity extends AppCompatActivity {
                 if (installFlag==true && distributeFlag==true && backupFlag==true && wrongFlag1==false && wrongFlag2==false)
                 {
                     btnStart.setImageResource(R.drawable.start_on);
-                    btnStart.setClickable(false);
+                    btnStart.setClickable(true);
+                    selectcorrect.start();
+                    btnInstall.setClickable(false);
+                    btnDistribute.setClickable(false);
+                    btnImplement.setClickable(false);
+                    btnActivate.setClickable(false);
+                    btnBackup.setClickable(false);
+                    btnReady.setClickable(false);
                 }
                 else
                 {

@@ -34,6 +34,7 @@ public class LevelOneActivity extends AppCompatActivity {
     private MediaPlayer bgm, selectcorrect, selectwrong;
     private Vibrator vibrator;
     String Username;
+    SQLiteDatabase sqLiteDatabase;
 
 //    public Timer timer = new Timer();
 //    public final Handler handler = new Handler();
@@ -46,6 +47,8 @@ public class LevelOneActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Username = intent.getStringExtra("Username");
+
+        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
 
         CHEAT = findViewById(R.id.command);
         TimeLeft = findViewById(R.id.timer);
@@ -165,7 +168,13 @@ public class LevelOneActivity extends AppCompatActivity {
         btnInform.setClickable(false);
         btnClean.setClickable(false);
 
+        String insertTotalScore = String.valueOf(totalScore);
+
+        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
+
+        wrongFlag++; //EXCEPTION HANDLING
         Intent intentGameOver = new Intent(LevelOneActivity.this, GameOverActivity.class);
+        intentGameOver.putExtra("TotalScore",totalScore);
         startActivity(intentGameOver);
         LevelOneActivity.this.finish();
 
@@ -488,13 +497,13 @@ public class LevelOneActivity extends AppCompatActivity {
 
         if(correctFlag==7){
             Log.d("IN WIN", "");
-            commandView.setText("YOU WIN!!!");
+            commandView.setText("");
             gameOverWin();
         }
         if(wrongFlag==3){
             Log.d("IN LOSE", "");
-            commandView.setText("YOU LOSE!!!");
-         /*   gameOverLose();*/
+            commandView.setText("");
+            gameOverLose();
         }
     }
     public void countscore() {

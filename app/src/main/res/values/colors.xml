@@ -6,5 +6,5 @@
     <color name="white">#FFFFFF</color>
     <color name="highscore">#29257C</color>
     <color name="scores">#817CEE</color>
-
+    <color name="red">#ff0004</color>
 </resources>

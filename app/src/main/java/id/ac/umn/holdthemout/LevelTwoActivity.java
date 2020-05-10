@@ -36,6 +36,8 @@ public class LevelTwoActivity extends AppCompatActivity {
 
     public String Username;
 
+    SQLiteDatabase sqLiteDatabase;
+
 //    SQLiteDatabase sqLiteDatabase;
 
     @Override
@@ -43,7 +45,7 @@ public class LevelTwoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leveltwo);
 
-//        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
+        sqLiteDatabase=openOrCreateDatabase("htodb", Context.MODE_PRIVATE, null);
 
         Intent intent = getIntent();
         totalScore = intent.getIntExtra("TotalScore",0);
@@ -159,7 +161,14 @@ public class LevelTwoActivity extends AppCompatActivity {
         btnEncrypt3224.setClickable(false);
         btnEncrypt3512.setClickable(false);
 
+        String insertTotalScore = String.valueOf(totalScore);
+
+        sqLiteDatabase.execSQL("Insert Into User(Username, Highscore)VALUES('" + Username + "','" + insertTotalScore + "')");
+
+        wrongFlag++; //EXCEPTION HANDLING
+
         Intent intentNext = new Intent(LevelTwoActivity.this, GameOverActivity.class);
+        intentNext.putExtra("TotalScore",totalScore);
         LevelTwoActivity.this.finish();
         startActivity(intentNext);
     }
@@ -1203,13 +1212,13 @@ public class LevelTwoActivity extends AppCompatActivity {
         }
         if(correctFlag==12){
             Log.d("IN WIN", "");
-            commandView.setText("YOU WIN!!!");
+            commandView.setText("");
             gameOverWin();
         }
         if(wrongFlag==3){
             Log.d("IN LOSE", "");
-            commandView.setText("YOU LOSE!!!");
-           /* gameOverLose();*/
+            commandView.setText("");
+            gameOverLose();
         }
     }
     @Override
