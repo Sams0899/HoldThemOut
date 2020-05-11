@@ -8,8 +8,10 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,7 +30,7 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference ref;
-    Button btnlocalhs;
+    ImageButton btnYourHighScore;
     ArrayList<String> dataArr;
 
     @Override
@@ -37,7 +39,8 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_global_high_score);
 
         final LinearLayout ll = findViewById(R.id.linearlayout);
-        btnlocalhs = findViewById(R.id.LocalHSBtn);
+        btnYourHighScore = findViewById(R.id.LocalHSBtn);
+        btnYourHighScore.setImageResource(R.drawable.your_highscore);
 
         final MediaPlayer select = MediaPlayer.create(GlobalHighScoreActivity.this, R.raw.select);
 
@@ -66,7 +69,7 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
 
                      for(DataSnapshot ds : dataSnapshot.getChildren())
                      {
-                         dataArr.add(" " + ds.child("uname").getValue(String.class) + "           " + ds.child("hscore").getValue(Long.class) + "\n\n");
+                         dataArr.add(ds.child("uname").getValue(String.class) + "  ---  " + ds.child("hscore").getValue(Long.class) + "\n\n");
 //                       bufferUsername.append(" " + ds.child("uname").getValue(String.class) + "           " + ds.child("hscore").getValue(Long.class) + "\n\n");
                      }
 
@@ -77,8 +80,10 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
                  LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                          LinearLayout.LayoutParams.WRAP_CONTENT,
                          LinearLayout.LayoutParams.MATCH_PARENT);
-                 tv.setTextSize(30);
+                 tv.setTextSize(25);
                  tv.setTextColor(Color.parseColor("#ffffff"));
+                 tv.setGravity(View.TEXT_ALIGNMENT_CENTER);
+                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                  tv.setLayoutParams(lp);
 
 //                 int arraySize = dataArr.size();
@@ -103,7 +108,7 @@ public class GlobalHighScoreActivity extends AppCompatActivity {
              }
          });
 
-         btnlocalhs.setOnClickListener(new View.OnClickListener() {
+        btnYourHighScore.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  select.start();

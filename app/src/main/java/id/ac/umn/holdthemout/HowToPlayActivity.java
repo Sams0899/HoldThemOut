@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,11 +18,13 @@ public class HowToPlayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_how_to_play);
-        final ImageView imageView = findViewById(R.id.Image1);
-        final Button btnImageChanger = findViewById(R.id.nextbtn);
+        final ImageView imageView = findViewById(R.id.image1);
+        final ImageButton btnImageChanger = findViewById(R.id.nextbtn);
         final TextView desc = findViewById(R.id.description);
         final MediaPlayer select = MediaPlayer.create(HowToPlayActivity.this, R.raw.select);
+        btnImageChanger.setImageResource(R.drawable.next_step);
         btnImageChanger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,7 +41,7 @@ public class HowToPlayActivity extends AppCompatActivity {
                     select.start();
                     imageView.setImageResource(R.drawable.score);
                     desc.setText("Try to finish each command as fast as possible for a better score");
-                    btnImageChanger.setText("To Main Menu");
+                    btnImageChanger.setImageResource(R.drawable.to_main_menu);
                 }else if(id==4){
                     select.start();
                     Intent startIntent = new Intent(HowToPlayActivity.this, MainActivity.class);

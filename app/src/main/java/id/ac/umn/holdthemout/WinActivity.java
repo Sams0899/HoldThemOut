@@ -6,12 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class WinActivity extends AppCompatActivity {
 
     private MediaPlayer bgm;
-    Button Btnmenu;
+    ImageButton btnMenu;
     int totalScore;
     TextView score;
     @Override
@@ -22,8 +23,10 @@ public class WinActivity extends AppCompatActivity {
         Intent intent = getIntent();
         totalScore = intent.getIntExtra("TotalScore",0);
 
-        Btnmenu = findViewById(R.id.mainmenubtn);
+        btnMenu = findViewById(R.id.mainmenubtn);
         score = findViewById(R.id.score);
+
+        btnMenu.setImageResource(R.drawable.to_main_menu);
 
         score.setText("Your Final Score: " + totalScore);
 
@@ -32,7 +35,7 @@ public class WinActivity extends AppCompatActivity {
 
         final MediaPlayer select = MediaPlayer.create(WinActivity.this, R.raw.select);
 
-        Btnmenu.setOnClickListener(new View.OnClickListener() {
+        btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 select.start();

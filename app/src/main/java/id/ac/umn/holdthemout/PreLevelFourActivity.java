@@ -72,15 +72,15 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (wrongFlag1 == false)
                 {
-                    wrongFlag1 = true;
-                    btnHire.setBackgroundResource(R.drawable.hire_more_staff_on);
                     select.start();
+                    wrongFlag1 = true;
+                    btnHire.setImageResource(R.drawable.hire_more_staff_on);
                 }
                 else
                 {
-                    wrongFlag1 = false;
-                    btnHire.setBackgroundResource(R.drawable.hire_more_staff_off);
                     select.start();
+                    wrongFlag1 = false;
+                    btnHire.setImageResource(R.drawable.hire_more_staff_off);
                 }
             }
         });
@@ -90,15 +90,15 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (provideFlag == false)
                 {
-                    provideFlag = true;
-                    btnProvide.setBackgroundResource(R.drawable.provide_training_for_staff_on);
                     select.start();
+                    provideFlag = true;
+                    btnProvide.setImageResource(R.drawable.provide_training_for_staff_on);
                 }
                 else
                 {
-                    provideFlag = false;
-                    btnProvide.setBackgroundResource(R.drawable.provide_training_for_staff_off);
                     select.start();
+                    provideFlag = false;
+                    btnProvide.setImageResource(R.drawable.provide_training_for_staff_off);
                 }
             }
         });
@@ -108,15 +108,15 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (orderFlag == false)
                 {
-                    orderFlag = true;
-                    btnOrder.setBackgroundResource(R.drawable.order_staff_to_sign_statement_on);
                     select.start();
+                    orderFlag = true;
+                    btnOrder.setImageResource(R.drawable.order_staff_to_sign_statement_on);
                 }
                 else
                 {
-                    orderFlag  = false;
-                    btnOrder.setBackgroundResource(R.drawable.order_staff_to_sign_statement_off);
                     select.start();
+                    orderFlag  = false;
+                    btnOrder.setImageResource(R.drawable.order_staff_to_sign_statement_off);
                 }
             }
         });
@@ -126,15 +126,15 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (defineFlag == false)
                 {
-                    defineFlag = true;
-                    btnDefine.setBackgroundResource(R.drawable.define_rules_and_consequences_on);
                     select.start();
+                    defineFlag = true;
+                    btnDefine.setImageResource(R.drawable.define_rules_and_consequences_on);
                 }
                 else
                 {
-                    defineFlag = false;
-                    btnDefine.setBackgroundResource(R.drawable.define_rules_and_consequences_off);
                     select.start();
+                    defineFlag = false;
+                    btnDefine.setImageResource(R.drawable.define_rules_and_consequences_off);
                 }
             }
         });
@@ -144,15 +144,15 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (wrongFlag2 == false)
                 {
-                    wrongFlag2 = true;
-                    btnAnalyze.setBackgroundResource(R.drawable.analize_incoming_signal_on);
                     select.start();
+                    wrongFlag2 = true;
+                    btnAnalyze.setImageResource(R.drawable.analize_incoming_signal_on);
                 }
                 else
                 {
-                    wrongFlag2 = false;
-                    btnAnalyze.setBackgroundResource(R.drawable.analize_incoming_signal_off);
                     select.start();
+                    wrongFlag2 = false;
+                    btnAnalyze.setImageResource(R.drawable.analize_incoming_signal_off);
                 }
             }
         });
@@ -161,16 +161,16 @@ public class PreLevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (wrongFlag3 == false)
                 {
-                    wrongFlag3 = true;
-                    btnDisable.setBackgroundResource(R.drawable.disable_all_services_on);
                     select.start();
+                    wrongFlag3 = true;
+                    btnDisable.setImageResource(R.drawable.disable_all_services_on);
                 }
                 else
                 {
-                    wrongFlag3 = false;
-                    btnDisable.setBackgroundResource(R.drawable.disable_all_services_off);
                     select.start();
-                }
+                    wrongFlag3 = false;
+                    btnDisable.setImageResource(R.drawable.disable_all_services_off);
+            }
             }
         });
 

@@ -1,53 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HowToPlayActivity">
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:text="How To Play"
-        android:textSize="48dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp" >
 
-    <ImageView
-        android:id="@+id/Image1"
-        android:layout_width="251dp"
-        android:layout_height="523dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="58dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="49dp"
-        android:src="@drawable/htp1" />
+        <TextView
+            android:id="@+id/command"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="How To Play"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/image1"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toTopOf="@+id/container"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1" />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="351dp"
-        android:layout_height="96dp"
-        android:layout_below="@+id/Image1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="-40dp"
-        android:text="Clear the pre-attack stage by pressing the 'Correct' button related with the attack"
-        android:textSize="20dp" />
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/description"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/command"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.55"
+            android:src="@drawable/htp1" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next Step"
-        android:id="@+id/nextbtn"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Clear the pre-attack stage by pressing the 'Correct' button related with the attack"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/nextbtn"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/image1"
+            android:padding="10dp"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.25" />
 
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/nextbtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@id/container"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+<!--<RelativeLayout -->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".HowToPlayActivity"-->
+<!--    android:orientation="vertical" >-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:text="How To Play"-->
+<!--        android:textSize="48dp" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/Image1"-->
+<!--        android:layout_width="251dp"-->
+<!--        android:layout_height="523dp"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_marginLeft="58dp"-->
+<!--        android:layout_marginRight="70dp"-->
+<!--        android:layout_marginStart="58dp"-->
+<!--        android:layout_marginTop="49dp"-->
+<!--        android:src="@drawable/htp1" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/description"-->
+<!--        android:layout_width="351dp"-->
+<!--        android:layout_height="96dp"-->
+<!--        android:layout_below="@+id/Image1"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        android:layout_marginLeft="25dp"-->
+<!--        android:layout_marginRight="100dp"-->
+<!--        android:layout_marginTop="-40dp"-->
+<!--        android:text="Clear the pre-attack stage by pressing the 'Correct' button related with the attack"-->
+<!--        android:textSize="20dp" />-->
+
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Next Step"-->
+<!--        android:id="@+id/nextbtn"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="10dp"/>-->
+
+<!--</RelativeLayout>-->

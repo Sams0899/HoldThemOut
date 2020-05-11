@@ -53,53 +53,53 @@
             android:id="@+id/scrollview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="center"
             android:padding="15dp"
-            android:layout_gravity="center|top"
             app:layout_constraintBottom_toTopOf="@id/GlobalHSBtn"
             app:layout_constraintLeft_toLeftOf="@+id/container"
             app:layout_constraintRight_toRightOf="@+id/container"
             app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.6">
+            app:layout_constraintHeight_percent="0.6" >
 
             <LinearLayout
                 android:id="@+id/linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:gravity="center_horizontal|center_vertical"
                 android:orientation="vertical">
+
             </LinearLayout>
         </ScrollView>
 
-        <Button
+        <ImageButton
             android:id="@+id/GlobalHSBtn"
             android:text="Global Highscore"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="@id/container"
+            app:layout_constraintBottom_toTopOf="@id/kosong"
             app:layout_constraintLeft_toLeftOf="@+id/container"
             app:layout_constraintRight_toRightOf="@+id/container"
             app:layout_constraintTop_toBottomOf="@id/scrollview"
             app:layout_constraintDimensionRatio="w,2:1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.15"  />
+            app:layout_constraintHeight_percent="0.1"
+            android:background="@android:color/transparent" />
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/GlobalHSBtn"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/container"-->
-<!--            app:layout_constraintLeft_toLeftOf="@+id/container"-->
-<!--            app:layout_constraintRight_toRightOf="@+id/container"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/scrollview"-->
-<!--            app:layout_constraintDimensionRatio="w,2:1"-->
-<!--            app:layout_constraintHeight_default="percent"-->
-<!--            app:layout_constraintHeight_percent="0.15" />-->
-
+        <ImageButton
+            android:id="@+id/kosong"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@id/container"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@id/GlobalHSBtn"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.05" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

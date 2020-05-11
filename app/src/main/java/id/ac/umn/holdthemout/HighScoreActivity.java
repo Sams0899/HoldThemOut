@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ import org.w3c.dom.Text;
 public class HighScoreActivity extends AppCompatActivity {
 
     SQLiteDatabase sqLiteDatabase;
-    Button globalhighscorebtn;
+    ImageButton btnGlobalHighScore;
     String username;
     int highscore;
     FirebaseDatabase database;
@@ -42,7 +43,8 @@ public class HighScoreActivity extends AppCompatActivity {
         //ini gw matiin - wisnu
 //        LinearLayout mainll = findViewById(R.id.mainlinearlayout);
         TextView uname = findViewById(R.id.username);
-        globalhighscorebtn = findViewById(R.id.GlobalHSBtn);
+        btnGlobalHighScore = findViewById(R.id.GlobalHSBtn);
+        btnGlobalHighScore.setImageResource(R.drawable.global_highscore);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("Users");
@@ -69,7 +71,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
             while(c.moveToNext())
             {
-                buffer.append(""+c.getString(2)+"\n\n");
+                buffer.append(c.getString(2)+"\n\n");
             }
             TextView tv = new TextView(getApplicationContext());
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -79,6 +81,8 @@ public class HighScoreActivity extends AppCompatActivity {
             tv.setTextSize(30);
             tv.setTextColor(Color.parseColor("#ffffff"));
             tv.setLayoutParams(lp);
+            tv.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             tv.setText(buffer.toString());
             ll.addView(tv);
 
@@ -101,7 +105,7 @@ public class HighScoreActivity extends AppCompatActivity {
             myRef.child(username).child("uname").setValue(username);
         }
 
-        globalhighscorebtn.setOnClickListener(new View.OnClickListener() {
+        btnGlobalHighScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 select.start();
