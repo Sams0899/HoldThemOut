@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btnStart, btnSetting, btnHowToPlay, btnProfile, btnHighScore, btnAbout;
+    private ImageButton btnStart, btnHowToPlay, btnSetting, btnProfile, btnHighScore, btnAbout;
     private MediaPlayer bgm;
     String Username;
 
@@ -23,16 +23,16 @@ public class MainActivity extends AppCompatActivity {
         Username = intent.getStringExtra("Username");
 
         btnStart = findViewById(R.id.startbtn);
-        btnSetting = findViewById(R.id.settingbtn);
         btnHowToPlay = findViewById(R.id.howtoplaybtn);
-        btnProfile = findViewById(R.id.profilebtn);
+//        btnSetting = findViewById(R.id.settingbtn);
+//        btnProfile = findViewById(R.id.profilebtn);
         btnHighScore = findViewById(R.id.highscorebtn);
         btnAbout = findViewById(R.id.aboutbtn);
 
         btnStart.setImageResource(R.drawable.start);
-        btnSetting.setImageResource(R.drawable.settings);
         btnHowToPlay.setImageResource(R.drawable.how_to_play);
-        btnProfile.setImageResource(R.drawable.view_my_profile);
+//        btnSetting.setImageResource(R.drawable.settings);
+//        btnProfile.setImageResource(R.drawable.view_my_profile);
         btnHighScore.setImageResource(R.drawable.view_highscore);
         btnAbout.setImageResource(R.drawable.about);
 

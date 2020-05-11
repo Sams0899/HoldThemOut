@@ -253,20 +253,22 @@ public class LevelThreeActivity extends AppCompatActivity {
         btnFilter = findViewById(R.id.filterbtn);
         btnThrottle = findViewById(R.id.throttle);
 
-        btnUpdate.setBackgroundResource(R.drawable.update_kernel_on);
-        btnIntercept.setBackgroundResource(R.drawable.intercept_tcp_packets_on);
-        btnBand10.setBackgroundResource(R.drawable.ten__on);
-        btnBand30.setBackgroundResource(R.drawable.thirty__on);
-        btnBand50.setBackgroundResource(R.drawable.fifty__on);
-        btnDrpAll.setBackgroundResource(R.drawable.all_on);
-        btnDrpHalf.setBackgroundResource(R.drawable.half_on);
-        btnEncrypt.setBackgroundResource(R.drawable.encrypt_data_transmission_on);
-        btnTurnOn.setBackgroundResource(R.drawable.turn_on_firewall_on);
-        btnFTP.setBackgroundResource(R.drawable.ftp_on);
-        btnGCD.setBackgroundResource(R.drawable.gcd_on);
-        btnSCD.setBackgroundResource(R.drawable.scd_on);
-        btnConfig.setBackgroundResource(R.drawable.configure_firewall_on);
-        btnPray.setBackgroundResource(R.drawable.pray_harder_on);
+        btnUpdate.setImageResource(R.drawable.update_kernel_on);
+        btnIntercept.setImageResource(R.drawable.intercept_tcp_packets_on);
+        btnBand10.setImageResource(R.drawable.ten__on);
+        btnBand30.setImageResource(R.drawable.thirty__on);
+        btnBand50.setImageResource(R.drawable.fifty__on);
+        btnDrpAll.setImageResource(R.drawable.all_on);
+        btnDrpHalf.setImageResource(R.drawable.half_on);
+        btnEncrypt.setImageResource(R.drawable.encrypt_data_transmission_on);
+        btnTurnOn.setImageResource(R.drawable.turn_on_firewall_on);
+        btnFTP.setImageResource(R.drawable.ftp_on);
+        btnGCD.setImageResource(R.drawable.gcd_on);
+        btnSCD.setImageResource(R.drawable.scd_on);
+        btnConfig.setImageResource(R.drawable.configure_firewall_on);
+        btnPray.setImageResource(R.drawable.pray_harder_on);
+        btnFilter.setImageResource(R.drawable.filter);
+        btnThrottle.setImageResource(R.drawable.throttle);
 
 
         scoreView.setText("Score : " + totalScore);

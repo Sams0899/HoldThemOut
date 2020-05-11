@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hold Them Out</string>
     <string name="title_activity_level_two">LevelTwoActivity</string>
-    <string name="members">MEMBERS</string>
+    <string name="developers">DEVELOPERS</string>
     <string name="nama1">ANTONIUS WISNU SETYAWAN\n00000025802\n13.antonius.wisnu@gmail.com</string>
     <string name="nama2">NATAYA APRILIANI KERTAWIJAYA\n00000025728\nnatayatayo@gmail.com</string>
     <string name="nama3">NEVEN YUSUF\n00000025750\ngregoriusneven@yahoo.com</string>

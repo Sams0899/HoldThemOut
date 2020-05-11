@@ -21,7 +21,7 @@ public class LevelFourActivity extends AppCompatActivity {
     private long starttimeinmillis = 8000;
     private TextView commandView, scoreView, TimeLeft, CHEAT, PaymentPercentage;
     private static SeekBar payment;
-    private ImageButton btnPayment,btnChangePass, btnBlock, btnHoldTongue, btnThrowbbq, btnFireStaff,btnHoldCampaign,btnHearStaff;
+    private ImageButton btnPayment,btnChangePass, btnBlock, btnHoldTongue, btnThrowbbq, btnFireStaff, btnHoldCampaign, btnHearStaff;
     public String TempPercentage;
     private CountDownTimer countdowntimer;
     private long timeleft = starttimeinmillis;
@@ -206,6 +206,15 @@ public class LevelFourActivity extends AppCompatActivity {
         btnHoldCampaign = findViewById(R.id.holdcampaign);
         btnHearStaff = findViewById(R.id.hearstaff);
         btnPayment = findViewById(R.id.adjpayment);
+
+        btnChangePass.setImageResource(R.drawable.change_all_passwords_on);
+        btnBlock.setImageResource(R.drawable.block_accounts_on);
+        btnHoldTongue.setImageResource(R.drawable.hold_their_tongues_on);
+        btnThrowbbq.setImageResource(R.drawable.throw_a_bbq_party_on);
+        btnFireStaff.setImageResource(R.drawable.fire_a_staff_on);
+        btnHoldCampaign.setImageResource(R.drawable.fire_a_staff_on);
+        btnHearStaff.setImageResource(R.drawable.hear_staff_s_counsel_on);
+        btnPayment.setImageResource(R.drawable.confirm_payment);
 
 
         scoreView.setText("Score : " + totalScore);

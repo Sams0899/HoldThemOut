@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -53,7 +54,7 @@
             android:layout_height="0dp"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@id/settingbtn"
+            app:layout_constraintBottom_toTopOf="@id/highscorebtn"
             app:layout_constraintLeft_toLeftOf="@+id/container"
             app:layout_constraintRight_toRightOf="@+id/container"
             app:layout_constraintTop_toBottomOf="@id/startbtn"
@@ -61,33 +62,33 @@
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.1" />
 
-        <ImageButton
-            android:id="@+id/settingbtn"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@id/profilebtn"
-            app:layout_constraintLeft_toLeftOf="@+id/container"
-            app:layout_constraintRight_toRightOf="@+id/container"
-            app:layout_constraintTop_toBottomOf="@id/howtoplaybtn"
-            app:layout_constraintDimensionRatio="w,2:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.1" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/settingbtn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/profilebtn"-->
+<!--            app:layout_constraintLeft_toLeftOf="@+id/container"-->
+<!--            app:layout_constraintRight_toRightOf="@+id/container"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/howtoplaybtn"-->
+<!--            app:layout_constraintDimensionRatio="w,2:1"-->
+<!--            app:layout_constraintHeight_default="percent"-->
+<!--            app:layout_constraintHeight_percent="0.1" />-->
 
-        <ImageButton
-            android:id="@+id/profilebtn"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@id/highscorebtn"
-            app:layout_constraintLeft_toLeftOf="@+id/container"
-            app:layout_constraintRight_toRightOf="@+id/container"
-            app:layout_constraintTop_toBottomOf="@id/settingbtn"
-            app:layout_constraintDimensionRatio="w,2:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.1" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/profilebtn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/highscorebtn"-->
+<!--            app:layout_constraintLeft_toLeftOf="@+id/container"-->
+<!--            app:layout_constraintRight_toRightOf="@+id/container"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/settingbtn"-->
+<!--            app:layout_constraintDimensionRatio="w,2:1"-->
+<!--            app:layout_constraintHeight_default="percent"-->
+<!--            app:layout_constraintHeight_percent="0.1" />-->
 
         <ImageButton
             android:id="@+id/highscorebtn"
@@ -98,7 +99,7 @@
             app:layout_constraintBottom_toTopOf="@id/aboutbtn"
             app:layout_constraintLeft_toLeftOf="@+id/container"
             app:layout_constraintRight_toRightOf="@+id/container"
-            app:layout_constraintTop_toBottomOf="@id/profilebtn"
+            app:layout_constraintTop_toBottomOf="@id/howtoplaybtn"
             app:layout_constraintDimensionRatio="w,2:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.1" />
@@ -128,6 +129,6 @@
             app:layout_constraintRight_toRightOf="@+id/container"
             app:layout_constraintTop_toBottomOf="@id/aboutbtn"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.05" />
+            app:layout_constraintHeight_percent="0.1" />
     </androidx.constraintlayout.widget.ConstraintLayout>>
 </androidx.constraintlayout.widget.ConstraintLayout>

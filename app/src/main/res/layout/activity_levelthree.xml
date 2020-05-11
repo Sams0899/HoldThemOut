@@ -1,346 +1,1192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".LevelThreeActivity"
     android:background="@drawable/background"
-    android:padding="0dp">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Timer :"
-            android:gravity="left"
-            android:textColor="@color/white"/>
-        <TextView
-            android:id="@+id/timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0:00"
-            android:textColor="@color/white"/>
-    </LinearLayout>
+    android:orientation="vertical"
+    tools:context=".LevelThreeActivity" >
 
-    <TextView
-        android:id="@+id/command"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:text=""
-        android:textColor="@color/white"/>
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textSize="10sp"
-        android:text=""
-        android:textColor="@color/white"/>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="9"
-        android:gravity="bottom"
-        android:orientation="vertical">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="top">
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/container2"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toTopOf="@+id/container"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.2"  >
 
-            <ImageButton
-                android:id="@+id/interceptbtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
+            <LinearLayout
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/command"
+                app:layout_constraintLeft_toLeftOf="@+id/container1"
+                app:layout_constraintTop_toTopOf="@+id/container1"
+                app:layout_constraintHeight_default="percent"
+                app:layout_constraintHeight_percent="0.2" >
 
-            <ImageButton
-                android:id="@+id/encryptbtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Timer :"
+                    android:gravity="left"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
 
-            <ImageButton
-                android:id="@+id/firewallbtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="top">
-
-            <ImageButton
-                android:id="@+id/kernelbtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/configurebtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/praybtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="top">
-
-            <ImageButton
-                android:id="@+id/bandwidthbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Increase Bandwidth"
-                android:textSize="15sp" />
-
-            <ImageButton
-                android:id="@+id/disablebtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Disable Service"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="top">
-
-            <ImageButton
-                android:id="@+id/B10btn"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="0.5"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/B30btn"
-                android:layout_width="15dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="0.5"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/B50btn"
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="0.5"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/FTPbtn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="0.5"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/GCDbtn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="0.5"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/SCDbtn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="0.5"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="top">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Drop Connection Request"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="top">
-
-            <ImageButton
-                android:id="@+id/Allbtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
-                android:id="@+id/Halfbtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitCenter" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="top">
-
-            <ImageButton
-                android:id="@+id/filterbtn"
-                android:layout_width="191dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Confirm Filter Packets"
-                android:textSize="15sp" />
-
-            <ImageButton
-                android:id="@+id/throttle"
-                android:layout_width="191dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Confirm Throttle Traffic"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="top">
-
-            <SeekBar
-                android:id="@+id/seekfilter"
-                android:layout_width="191dp"
-                android:layout_height="match_parent"
-                android:gravity="left"/>
-
-            <SeekBar
-                android:id="@+id/seektraffic"
-                android:layout_width="191dp"
-                android:layout_height="match_parent"
-                android:gravity="right" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:gravity="top">
+                <TextView
+                    android:id="@+id/timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0:00"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/filter"
-                android:layout_width="191dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0"
-                android:textSize="15sp"
-                android:textColor="@color/white"/>
+                android:id="@+id/command"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/score"
+                app:layout_constraintLeft_toLeftOf="@+id/container1"
+                app:layout_constraintRight_toRightOf="@+id/container1"
+                app:layout_constraintTop_toBottomOf="@+id/time"
+                app:layout_constraintHeight_default="percent"
+                app:layout_constraintHeight_percent="0.6" />
 
             <TextView
-                android:id="@+id/traffic"
-                android:layout_width="191dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0"
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
                 android:textSize="15sp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+                app:layout_constraintBottom_toBottomOf="@id/container1"
+                app:layout_constraintLeft_toLeftOf="@+id/container1"
+                app:layout_constraintRight_toRightOf="@+id/container1"
+                app:layout_constraintTop_toBottomOf="@+id/command"
+                app:layout_constraintHeight_default="percent"
+                app:layout_constraintHeight_percent="0.2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/container"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/container1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.8" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/containerinside2"
+                app:layout_constraintLeft_toLeftOf="@+id/container2"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toTopOf="@+id/container2" >
+
+                <ImageButton
+                    android:id="@+id/interceptbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside"
+                    app:layout_constraintRight_toLeftOf="@+id/encryptbtn"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside"
+                    app:layout_constraintDimensionRatio="2:1" />
+
+                <ImageButton
+                    android:id="@+id/encryptbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside"
+                    app:layout_constraintLeft_toRightOf="@+id/interceptbtn"
+                    app:layout_constraintRight_toLeftOf="@+id/firewallbtn"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside"
+                    app:layout_constraintDimensionRatio="2:1" />
+
+                <ImageButton
+                    android:id="@+id/firewallbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside"
+                    app:layout_constraintLeft_toRightOf="@+id/encryptbtn"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside"
+                    app:layout_constraintDimensionRatio="2:1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingLeft="2.5dp"
+                android:paddingRight="2.5dp"
+                app:layout_constraintBottom_toTopOf="@+id/containerinside3"
+                app:layout_constraintLeft_toLeftOf="@+id/container2"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toBottomOf="@+id/containerinside">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerinside2.1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside2"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside2"
+                    app:layout_constraintRight_toLeftOf="@+id/containerinside2.2"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside2"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.7"
+                    android:background="@drawable/border" >
+
+                    <TextView
+                        android:id="@+id/increase_bandwidth"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:text="INCREASE BANDWIDTH"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toTopOf="@+id/B30btn"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside2.1"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside2.1"
+                        app:layout_constraintTop_toTopOf="@+id/containerinside2.1"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.2" />
+
+                    <ImageButton
+                        android:id="@+id/B10btn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/increase_bandwidth"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside2.1"
+                        app:layout_constraintRight_toLeftOf="@+id/B30btn"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside2.1"
+                        app:layout_constraintDimensionRatio="2:1" />
+
+                    <ImageButton
+                        android:id="@+id/B30btn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/increase_bandwidth"
+                        app:layout_constraintLeft_toRightOf="@+id/B10btn"
+                        app:layout_constraintRight_toLeftOf="@+id/B50btn"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside2.1"
+                        app:layout_constraintDimensionRatio="2:1" />
+
+                    <ImageButton
+                        android:id="@+id/B50btn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/increase_bandwidth"
+                        app:layout_constraintLeft_toRightOf="@+id/B30btn"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside2.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside2.1"
+                        app:layout_constraintDimensionRatio="2:1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerinside2.2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside2"
+                    app:layout_constraintLeft_toRightOf="@+id/containerinside2.1"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside2"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside2"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.3" >
+
+                    <ImageButton
+                        android:id="@+id/kernelbtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:padding="5dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toTopOf="@+id/containerinside2.2"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside2.2"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside2.2"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside2.2"
+                        app:layout_constraintDimensionRatio="2:1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/kernelbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/containerinside2"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@+id/containerinside2"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/configurebtn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside2"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+<!--                done-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/configurebtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/containerinside2"-->
+<!--                    app:layout_constraintLeft_toRightOf="@+id/kernelbtn"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/praybtn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside2"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+<!--                done-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/praybtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/containerinside2"-->
+<!--                    app:layout_constraintLeft_toRightOf="@+id/configurebtn"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside2"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside2"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+<!--                done-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/containerinside4"
+                app:layout_constraintLeft_toLeftOf="@+id/container2"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toBottomOf="@+id/containerinside2" >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerinside3.1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside3"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside3"
+                    app:layout_constraintRight_toLeftOf="@+id/containerinside3.2"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside3"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.3" >
+
+                    <ImageButton
+                        android:id="@+id/configurebtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:padding="5dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toTopOf="@+id/containerinside3.1"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside3.1"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside3.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside3.1"
+                        app:layout_constraintDimensionRatio="2:1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerinside3.2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:paddingLeft="2.5dp"
+                    android:paddingRight="2.5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside3"
+                    app:layout_constraintLeft_toRightOf="@+id/containerinside3.1"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside3"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside3"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.7"
+                    android:background="@drawable/border" >
+
+                    <TextView
+                        android:id="@+id/disable_service"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:text="DISABLE BANDWIDTH"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toTopOf="@+id/SCDbtn"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside3.2"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside3.2"
+                        app:layout_constraintTop_toTopOf="@+id/containerinside3.2"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.2" />
+
+                    <ImageButton
+                        android:id="@+id/FTPbtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/disable_service"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside3.2"
+                        app:layout_constraintRight_toLeftOf="@+id/GCDbtn"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside3.2"
+                        app:layout_constraintDimensionRatio="2:1" />
+
+                    <ImageButton
+                        android:id="@+id/GCDbtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/disable_service"
+                        app:layout_constraintLeft_toRightOf="@+id/FTPbtn"
+                        app:layout_constraintRight_toLeftOf="@+id/SCDbtn"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside3.2"
+                        app:layout_constraintDimensionRatio="2:1" />
+
+                    <ImageButton
+                        android:id="@+id/SCDbtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/disable_service"
+                        app:layout_constraintLeft_toRightOf="@+id/GCDbtn"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside3.2"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside3.2"
+                        app:layout_constraintDimensionRatio="2:1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/increase_bandwidth"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="INCREASE BANDWIDTH"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="15sp"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/B30btn"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@+id/containerinside3"-->
+<!--                    app:layout_constraintRight_toRightOf="@+id/containerinside3"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/containerinside3"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.2" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/B10btn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/increase_bandwidth"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/containerinside3"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/B30btn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside3"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/B30btn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/increase_bandwidth"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/B10btn"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/B50btn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside3"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/B50btn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/increase_bandwidth"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/B30btn"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside3"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside3"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+<!--                done-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/containerinside5"
+                app:layout_constraintLeft_toLeftOf="@+id/container2"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toBottomOf="@+id/containerinside3" >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerinside4.1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside4"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside4"
+                    app:layout_constraintRight_toLeftOf="@+id/containerinside4.2"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside4"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.7"
+                    android:background="@drawable/border" >
+
+                    <TextView
+                        android:id="@+id/encypt_data_transmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:text="DROP CONNECTION REQUEST"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toTopOf="@+id/Allbtn"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside4.1"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside4.1"
+                        app:layout_constraintTop_toTopOf="@+id/containerinside4.1"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.2" />
+
+                    <ImageButton
+                        android:id="@+id/Allbtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:padding="5dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/encypt_data_transmit"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside4.1"
+                        app:layout_constraintRight_toLeftOf="@+id/Halfbtn"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside4.1"
+                        app:layout_constraintDimensionRatio="2:1" />
+
+                    <ImageButton
+                        android:id="@+id/Halfbtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:padding="5dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toBottomOf="@+id/encypt_data_transmit"
+                        app:layout_constraintLeft_toRightOf="@+id/Allbtn"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside4.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside4.1"
+                        app:layout_constraintDimensionRatio="2:1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerinside4.2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside4"
+                    app:layout_constraintLeft_toRightOf="@+id/containerinside4.1"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside4"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside4"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.3" >
+
+                    <ImageButton
+                        android:id="@+id/praybtn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:padding="5dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toTopOf="@+id/containerinside4.2"
+                        app:layout_constraintLeft_toLeftOf="@+id/containerinside4.2"
+                        app:layout_constraintRight_toRightOf="@+id/containerinside4.2"
+                        app:layout_constraintBottom_toBottomOf="@+id/containerinside4.2"
+                        app:layout_constraintDimensionRatio="2:1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/disable_service"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="DISABLE BANDWIDTH"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="15sp"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/SCDbtn"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@+id/containerinside4"-->
+<!--                    app:layout_constraintRight_toRightOf="@+id/containerinside4"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/containerinside4"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.2" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/FTPbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/disable_service"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/containerinside4"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/GCDbtn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside4"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/GCDbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/disable_service"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/FTPbtn"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/SCDbtn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside4"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/SCDbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/disable_service"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/GCDbtn"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside4"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside4"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+<!--                done-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:id="@+id/containerinside5"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                app:layout_constraintBottom_toTopOf="@id/containerinside6"-->
+<!--                app:layout_constraintLeft_toLeftOf="@id/container2"-->
+<!--                app:layout_constraintRight_toRightOf="@id/container2"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/containerinside3" >-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/encypt_data_transmit"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="DROP CONNECTION REQUEST"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="15sp"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/Allbtn"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@+id/containerinside5"-->
+<!--                    app:layout_constraintRight_toRightOf="@+id/containerinside5"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/containerinside5"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.2" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/Allbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/encypt_data_transmit"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/containerinside5"-->
+<!--                    app:layout_constraintRight_toLeftOf="@id/Halfbtn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside5"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/Halfbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/encypt_data_transmit"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/Allbtn"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside5"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside5"-->
+<!--                    app:layout_constraintDimensionRatio="2:1" />-->
+<!--                done-->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="@id/container2"
+                app:layout_constraintLeft_toLeftOf="@id/container2"
+                app:layout_constraintRight_toLeftOf="@id/containerinside6"
+                app:layout_constraintTop_toBottomOf="@id/containerinside4"
+                android:background="@drawable/border" >
+
+                <TextView
+                    android:id="@+id/filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@+id/seekfilter"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside5"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside5"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside5"
+                    app:layout_constraintHeight_default="percent"
+                    app:layout_constraintHeight_percent="0.15" />
+
+                <SeekBar
+                    android:id="@+id/seekfilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="left"
+                    app:layout_constraintTop_toBottomOf="@+id/filter"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside5"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside5"
+                    app:layout_constraintBottom_toTopOf="@+id/filterbtn"
+                    app:layout_constraintHeight_default="percent"
+                    app:layout_constraintHeight_percent="0.35"  />
+
+                <ImageButton
+                    android:id="@+id/filterbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toBottomOf="@+id/seekfilter"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside5"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside5"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside5"
+                    app:layout_constraintDimensionRatio="2:1"
+                    app:layout_constraintHeight_default="percent"
+                    app:layout_constraintHeight_percent="0.45" />
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/filterbtn"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/containerinside5"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/containerinside5"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside5"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/seekfilter"-->
+<!--                    app:layout_constraintDimensionRatio="2:1"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.4" />-->
+
+<!--                <SeekBar-->
+<!--                    android:id="@+id/seekfilter"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:gravity="left"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/filterbtn"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/containerinside5"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside5"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/filter"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.4"  />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/filter"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text=""-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside5"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@+id/containerinside5"-->
+<!--                    app:layout_constraintRight_toRightOf="@+id/containerinside5"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/seekfilter"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.2" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerinside6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/container2"
+                app:layout_constraintLeft_toRightOf="@+id/containerinside5"
+                app:layout_constraintRight_toRightOf="@+id/container2"
+                app:layout_constraintTop_toBottomOf="@+id/containerinside4"
+                android:background="@drawable/border" >
+
+                <TextView
+                    android:id="@+id/traffic"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintBottom_toTopOf="@+id/seektraffic"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside6"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside6"
+                    app:layout_constraintTop_toTopOf="@+id/containerinside6"
+                    app:layout_constraintHeight_default="percent"
+                    app:layout_constraintHeight_percent="0.15" />
+
+                <SeekBar
+                    android:id="@+id/seektraffic"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="left"
+                    app:layout_constraintTop_toBottomOf="@+id/traffic"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside6"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside6"
+                    app:layout_constraintBottom_toTopOf="@+id/throttle"
+                    app:layout_constraintHeight_default="percent"
+                    app:layout_constraintHeight_percent="0.35"  />
+
+                <ImageButton
+                    android:id="@+id/throttle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toBottomOf="@+id/seektraffic"
+                    app:layout_constraintLeft_toLeftOf="@+id/containerinside6"
+                    app:layout_constraintRight_toRightOf="@+id/containerinside6"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerinside6"
+                    app:layout_constraintDimensionRatio="2:1"
+                    app:layout_constraintHeight_default="percent"
+                    app:layout_constraintHeight_percent="0.45" />
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/throttle"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/containerinside6"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/containerinside6"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside6"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/seektraffic"-->
+<!--                    app:layout_constraintDimensionRatio="2:1"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.4" />-->
+
+<!--                <SeekBar-->
+<!--                    android:id="@+id/seektraffic"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:gravity="left"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/throttle"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@id/containerinside6"-->
+<!--                    app:layout_constraintRight_toRightOf="@id/containerinside6"-->
+<!--                    app:layout_constraintBottom_toTopOf="@id/traffic"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.4"  />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/traffic"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text=""-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/containerinside6"-->
+<!--                    app:layout_constraintLeft_toLeftOf="@+id/containerinside6"-->
+<!--                    app:layout_constraintRight_toRightOf="@+id/containerinside6"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/seektraffic"-->
+<!--                    app:layout_constraintHeight_default="percent"-->
+<!--                    app:layout_constraintHeight_percent="0.2" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".LevelThreeActivity"-->
+<!--    android:background="@drawable/background"-->
+<!--    android:padding="0dp">-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Timer :"-->
+<!--            android:gravity="left"-->
+<!--            android:textColor="@color/white"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/timer"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="0:00"-->
+<!--            android:textColor="@color/white"/>-->
+<!--    </LinearLayout>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/command"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_weight="1"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="10dp"-->
+<!--        android:textSize="20sp"-->
+<!--        android:text=""-->
+<!--        android:textColor="@color/white"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/score"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="10sp"-->
+<!--        android:text=""-->
+<!--        android:textColor="@color/white"/>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="9"-->
+<!--        android:gravity="bottom"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="top">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/interceptbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/encryptbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/firewallbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="top">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/kernelbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/configurebtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/praybtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+<!--        </LinearLayout>-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:gravity="top">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/bandwidthbtn"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Increase Bandwidth"-->
+<!--                android:textSize="15sp" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/disablebtn"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Disable Service"-->
+<!--                android:textSize="15sp" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:gravity="top">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/B10btn"-->
+<!--                android:layout_width="20dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/B30btn"-->
+<!--                android:layout_width="15dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/B50btn"-->
+<!--                android:layout_width="10dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/FTPbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/GCDbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/SCDbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:gravity="top">-->
+
+<!--            <ImageButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Drop Connection Request"-->
+<!--                android:textSize="15sp" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:gravity="top">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/Allbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/Halfbtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                android:layout_marginRight="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:padding="0dp"-->
+<!--                android:scaleType="fitCenter" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:gravity="top">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/filterbtn"-->
+<!--                android:layout_width="191dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Confirm Filter Packets"-->
+<!--                android:textSize="15sp" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/throttle"-->
+<!--                android:layout_width="191dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Confirm Throttle Traffic"-->
+<!--                android:textSize="15sp" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:gravity="top">-->
+
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekfilter"-->
+<!--                android:layout_width="191dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="left"/>-->
+
+<!--            <SeekBar-->
+<!--                android:id="@+id/seektraffic"-->
+<!--                android:layout_width="191dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="right" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="0"-->
+<!--            android:gravity="top">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/filter"-->
+<!--                android:layout_width="191dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="0"-->
+<!--                android:textSize="15sp"-->
+<!--                android:textColor="@color/white"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/traffic"-->
+<!--                android:layout_width="191dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="0"-->
+<!--                android:textSize="15sp"-->
+<!--                android:textColor="@color/white"/>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+<!--</LinearLayout>-->
