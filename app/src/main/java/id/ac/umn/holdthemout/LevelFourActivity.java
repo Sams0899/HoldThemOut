@@ -382,13 +382,13 @@ public class LevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==2){
                     correctFlag++;
-                    Log.d("SELECT CORRECT", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT CORRECT", "Select 2 while Command = " + commandFlag);
                     selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
-                    Log.d("SELECT WRONG", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT WRONG", "Select 2 while Command = " + commandFlag);
                     vibrator.vibrate(100);
                     selectwrong.start();
                     resetTimer();
@@ -400,13 +400,13 @@ public class LevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==3){
                     correctFlag++;
-                    Log.d("SELECT CORRECT", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT CORRECT", "Select 3 while Command = " + commandFlag);
                     selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
-                    Log.d("SELECT WRONG", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT WRONG", "Select 3 while Command = " + commandFlag);
                     vibrator.vibrate(100);
                     selectwrong.start();
                     resetTimer();
@@ -418,13 +418,13 @@ public class LevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==4){
                     correctFlag++;
-                    Log.d("SELECT CORRECT", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT CORRECT", "Select 4 while Command = " + commandFlag);
                     selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
-                    Log.d("SELECT WRONG", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT WRONG", "Select 4 while Command = " + commandFlag);
                     vibrator.vibrate(100);
                     selectwrong.start();
                     resetTimer();
@@ -436,13 +436,13 @@ public class LevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==5){
                     correctFlag++;
-                    Log.d("SELECT CORRECT", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT CORRECT", "Select 5 while Command = " + commandFlag);
                     selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
-                    Log.d("SELECT WRONG", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT WRONG", "Select 5 while Command = " + commandFlag);
                     vibrator.vibrate(100);
                     selectwrong.start();
                     resetTimer();
@@ -454,13 +454,13 @@ public class LevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==6){
                     correctFlag++;
-                    Log.d("SELECT CORRECT", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT CORRECT", "Select 6 while Command = " + commandFlag);
                     selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
-                    Log.d("SELECT WRONG", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT WRONG", "Select 6 while Command = " + commandFlag);
                     vibrator.vibrate(100);
                     selectwrong.start();
                     resetTimer();
@@ -472,13 +472,13 @@ public class LevelFourActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(commandFlag==7){
                     correctFlag++;
-                    Log.d("SELECT CORRECT", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT CORRECT", "Select 7 while Command = " + commandFlag);
                     selectcorrect.start();
                     countscore();
                     resetTimer();
                 }else{
                     wrongFlag++;
-                    Log.d("SELECT WRONG", "Select 1 while Command = " + commandFlag);
+                    Log.d("SELECT WRONG", "Select 7 while Command = " + commandFlag);
                     vibrator.vibrate(100);
                     selectwrong.start();
                     resetTimer();
