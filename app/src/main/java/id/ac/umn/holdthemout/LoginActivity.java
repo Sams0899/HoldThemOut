@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity{
     SQLiteDatabase sqLiteDatabase;
     private EditText username;
     String uname;
-    private Button loginButton;
+    private ImageButton loginButton;
     SharedPreferences loginPref;
 
     @Override
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity{
 
         username = findViewById(R.id.username);
         loginButton = findViewById(R.id.Btnlogin);
+        loginButton.setImageResource(R.drawable.play);
         loginPref = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isLogin = loginPref.getBoolean("isLogin", false);
 
