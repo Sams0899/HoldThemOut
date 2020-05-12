@@ -40,6 +40,7 @@ public class PreLevelTwoActivity extends AppCompatActivity {
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
         btnStart.setClickable(false);
+        btnStart.setEnabled(false);
 
         btnInstall.setImageResource(R.drawable.install2_off);
         btnSSH.setImageResource(R.drawable.ssh_off);
@@ -204,6 +205,7 @@ public class PreLevelTwoActivity extends AppCompatActivity {
                     selectcorrect.start();
                     btnStart.setImageResource(R.drawable.start_on);
                     btnStart.setClickable(true);
+                    btnStart.setEnabled(true);
                     btnInstall.setClickable(false);
                     btnSSH.setClickable(false);
                     btnIDS.setClickable(false);

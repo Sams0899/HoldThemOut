@@ -38,6 +38,7 @@ public class PreLevelFourActivity extends AppCompatActivity {
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
         btnStart.setClickable(false);
+        btnStart.setEnabled(false);
 
         btnProvide.setImageResource(R.drawable.provide_training_for_staff_off);
         btnOrder.setImageResource(R.drawable.order_staff_to_sign_statement_off);
@@ -182,6 +183,7 @@ public class PreLevelFourActivity extends AppCompatActivity {
                     selectcorrect.start();
                     btnStart.setImageResource(R.drawable.start_on);
                     btnStart.setClickable(true);
+                    btnStart.setEnabled(true);
                     btnProvide.setClickable(false);
                     btnOrder.setClickable(false);
                     btnDefine.setClickable(false);

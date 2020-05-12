@@ -38,6 +38,7 @@ public class PreLevelThreeActivity extends AppCompatActivity {
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
         btnStart.setClickable(false);
+        btnStart.setEnabled(false);
 
         btnProfile.setImageResource(R.drawable.profile_web_activity_off);
         btnSignal.setImageResource(R.drawable.analize_incomming_signal_off);
@@ -182,6 +183,7 @@ public class PreLevelThreeActivity extends AppCompatActivity {
                     selectcorrect.start();
                     btnStart.setImageResource(R.drawable.start_on);
                     btnStart.setClickable(true);
+                    btnStart.setEnabled(true);
                     btnProfile.setClickable(false);
                     btnSignal.setClickable(false);
                     btnHoneypots.setClickable(false);

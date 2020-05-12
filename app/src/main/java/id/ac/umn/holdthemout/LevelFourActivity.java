@@ -158,7 +158,10 @@ public class LevelFourActivity extends AppCompatActivity {
 
         //////////////////
 
+        correctFlag++; //EXCEPTION HANDLING
+
         Intent intentNext = new Intent(LevelFourActivity.this, WinActivity.class);
+        intentNext.putExtra("TotalScore",totalScore);
         startActivity(intentNext);
         LevelFourActivity.this.finish();
     }
@@ -212,7 +215,7 @@ public class LevelFourActivity extends AppCompatActivity {
         btnHoldTongue.setImageResource(R.drawable.hold_their_tongues_on);
         btnThrowbbq.setImageResource(R.drawable.throw_a_bbq_party_on);
         btnFireStaff.setImageResource(R.drawable.fire_a_staff_on);
-        btnHoldCampaign.setImageResource(R.drawable.fire_a_staff_on);
+        btnHoldCampaign.setImageResource(R.drawable.hold_a_campaign_on);
         btnHearStaff.setImageResource(R.drawable.hear_staff_s_counsel_on);
         btnPayment.setImageResource(R.drawable.confirm_payment);
 

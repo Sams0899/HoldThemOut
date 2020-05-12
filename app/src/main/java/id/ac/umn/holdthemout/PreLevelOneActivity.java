@@ -37,6 +37,7 @@ public class PreLevelOneActivity extends AppCompatActivity {
         btnReady = findViewById(R.id.readybtn);
         btnStart = findViewById(R.id.startbtn);
         btnStart.setClickable(false);
+        btnStart.setEnabled(false);
 
         btnInstall.setImageResource(R.drawable.install_off);
         btnDistribute.setImageResource(R.drawable.distribute_off);
@@ -164,6 +165,7 @@ public class PreLevelOneActivity extends AppCompatActivity {
                 {
                     btnStart.setImageResource(R.drawable.start_on);
                     btnStart.setClickable(true);
+                    btnStart.setEnabled(true);
                     selectcorrect.start();
                     btnInstall.setClickable(false);
                     btnDistribute.setClickable(false);

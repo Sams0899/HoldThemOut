@@ -192,6 +192,7 @@
                 android:padding="10dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
+                android:clickable="false"
                 app:layout_constraintBottom_toBottomOf="@id/container3"
                 app:layout_constraintLeft_toLeftOf="@id/container3"
                 app:layout_constraintRight_toRightOf="@id/container3"
